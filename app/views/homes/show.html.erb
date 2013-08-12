@@ -1,0 +1,39 @@
+<body class="background-light sidebar-hidden" id="frontpage">
+  <div class="wrap">
+    <div class="content container-fluid">
+      <div class="row-fluid">
+        <div class="span12 text-align-center boxhome">
+          <h1>launch dance music today</h1>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12 text-align-center">
+          <div class="span4 offset2 widget  text-align-center">
+            <h3>for fans <i class="icon-hand-up"></i></h3>
+          </div>
+          <div class="span4 widget text-align-center">
+            <h3>for musicians <i class="icon-hand-up"></i></h3>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12 text-align-center">
+          <%= link_to "http://www.youtube.com/v/OQYxJfsydFU&autoplay=1", :target => "_blank" do  %>
+            <%= image_tag "play2.png", {style: "height: 100px"} %>
+          <% end %>
+          <h2>don't press play</h2>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12"></div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12 text-align-center">
+          <%= link_to user_omniauth_authorize_path(:facebook) do %>
+            <%= image_tag "connectfb.png" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
