@@ -1,0 +1,58 @@
+<body class="background-light sidebar-hidden">
+  <div class="wrap" id="home">
+    <div class="content container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <section class="widget">
+          <header>
+          <h4><i class="icon-rocket"></i>Launchbase</h4>
+          </header>
+          <div class="body">
+            <h5>Here you will find all your launches. <small>Click artwork to play preview</small></h5>
+            <table id="datatable-table" class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Campaign</th>
+                  <th class="no-sort">Artwork</th>
+                  <th>Musician</th>
+                  <th class="hidden-phone-landscape">Reserved On</th>
+                  <th>Progress</th>
+                  <th>Requests Left</th>
+                  <th class="no-sort">Download Link</th>
+                  <th>Faster <i class="icon-time"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    <%= link_to music_path do %>
+                      No Good
+                    <% end %>
+                  </td>
+                  <td>
+                    <a href="http://soundcloud.com/feddelegrand/flg-sns-nogood" class="stratus">
+                      <%= image_tag "1.jpg", {style: "height: 25px;"} %>
+                    </a>
+                  </td>
+                  <td>
+                    <%= link_to music_path do %>
+                      Sultan & Ned Shepard
+                    <% end %>
+                  </td>
+                  <td>12/06/2013</td>
+                  <td>70%</td>
+                  <td>24</td>
+                  <td><a href="#">Download the full track</a></td>
+                  <td><p class="btn btn-mini btn-info"><i class="icon-facebook"></i> Share</p></td>
+                </tr>
+              </tbody>
+            </table>
+           </div>
+         </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

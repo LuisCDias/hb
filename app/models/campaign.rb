@@ -1,4 +1,5 @@
 class Campaign < ActiveRecord::Base
+  belongs_to :category
   has_many :backers, through: :reservations, source: :user
   has_many :reservations
 
