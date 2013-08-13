@@ -1,5 +1,6 @@
 require 'spec_helper'
 
-describe Campaign do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Campaign, 'associations' do
+  it { should have_many(:backers).through(:reservations) }
+  it { should have_many(:reservations) }
 end

@@ -1,0 +1,32 @@
+<%= div_for campaign, class: 'span3' do %>
+  <section class="widget campaign">
+    <header>
+      <h4><%= link_to '#', campaign_path(campaign) %></h4>
+      <p>by  </p>
+    </header>
+    <div class="body">
+      <div class="text-align-center">
+        <%= link_to '#', class: 'stratus' do %>
+          <%= image_tag class: 'campaignartwork' %>
+        <% end %>
+      </div>
+      <br />
+      <ul class="server-stats">
+        <li>
+          <div class="key pull-right">
+            %
+          </div>
+          <div class="stat">
+            <div class="info"> left</div>
+            <div class="progress progress-striped">
+              <div class="bar" style="width: 0%"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="text-align-center">
+        <%= campaign_controls_for campaign, current_user %>
+      </div>
+    </div>
+  </section>
+<% end %>
