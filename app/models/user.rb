@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_one :musician
   has_one :soundcloud_account, through: :musician
 
-  validates :auth_uid, uniqueness: true
   validates :name, presence: true
 
   def self.find_or_create_from_auth_hash(auth_hash)
