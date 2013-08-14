@@ -1,7 +1,7 @@
 <h2>Create a campaign</h2>
 
 <%= form_for @campaign do |form| %>
-  <% @campaign.errors.any? %>
+  <% if @campaign.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
     <ul>
@@ -27,9 +27,8 @@
     <h4>How many reservations would you like for early release</h4>
     <%= form.number_field :requested_likes %>
   </div>
-  <div>
-    <%= form.label :track_id,
-      'Choose a track from Soundcloud for your campaign' %>
+  <div class="field">
+    <h4>Choose a track from Soundcloud for your campaign</h4>
     <%= form.collection_select(
       :track_id,
       @campaign.musician.soundcloud_account.get_tracks_for_musician,
@@ -37,11 +36,11 @@
       :title
     ) %>
   </div>
-  <div>
-    <%= form.label :full_track, 'Upload your full track here' %>
+  <div class="field">
+    <h4>Upload your full track here</h4>
     <%= form.file_field :full_track %>
   </div>
-  <div>
+  <div class="actions">
     <%= form.submit 'Create campaign' %>
   </div>
 <% end %>
