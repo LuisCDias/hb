@@ -11,7 +11,7 @@
 </li>
 <li class="dropdown introhome" >
 <a href="#" class="dropdown-toggle" id="homelogo" data-toggle="dropdown">
-  <i class="icon-user"></i> Tiago
+  <i class="icon-user"></i> <%= current_user.name %>
   <b class="caret"></b>
 </a>
 <ul class="dropdown-menu">
@@ -26,6 +26,10 @@
   <% end %>
   </li>
   <li><%= link_to '#' do %><i class="icon-smile"></i> Help<% end %></li>
-  <li><%= link_to '#' do %><i class="icon-download"></i> Logout<% end %></li>
+  <li>
+    <%= link_to sign_out_path do %>
+      <i class="icon-download"></i> Logout
+    <% end %>
+  </li>
 </ul>
 </li>

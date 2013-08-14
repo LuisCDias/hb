@@ -3,10 +3,12 @@
     <%= link_to root_path, {class: "brand", id: "homelogo"} do %>
       <i class="icon-rocket"></i> headblendr <small>beta</small>
     <% end %>
-    <form class="navbar-search pull-left hidden-phone">
-      <p><%= text_field_tag :search, params[:search], class: "search-query" %></p>
-    </form>
     <ul class="nav pull-right">
+      <li class="active hidden-phone">
+        <%= link_to music_path do %>
+          <i class="icon-heart"></i> Music
+        <% end %>
+      </li>
      <%= navigation_for current_user %>
    </ul>
   </div>

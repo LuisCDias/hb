@@ -6,11 +6,18 @@
   <title><%= page_title %></title>
   <%= stylesheet_link_tag :application, :media => 'all' %>
   <%= csrf_meta_tags %>
+  <%= content_for?(:head) ? yield(:head) : '' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="<%= body_class %>">
   <%= render 'header' -%>
   <%= render 'flashes' -%>
   <%= yield %>
   <%= render 'javascript' %>
+  <% if current_page? root_path %>
+    <%= render 'footer' %>
+  <% else %>
+    <%= render 'player' %>
+  <% end %>
 </body>
 </html>

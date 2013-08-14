@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def campaign_controls_for(campaign, user)
-    if campaign.is_available_for? user
+    if campaign.is_available_for?(user) && campaign.musician.user != user
       reserve_campaign_button campaign
     else
       campaign_reserved_button
@@ -17,10 +17,12 @@ module ApplicationHelper
 
   def reserve_campaign_button(campaign)
     button_to 'Make it launch faster',
-      campaign_reservations_path(campaign)
+      campaign_reservations_path(campaign),
+      class: 'btn btn-info'
   end
 
   def campaign_reserved_button
-    button_tag 'Reserved', inactive: true
+    button_tag 'Reserved', inactive: true,
+      class: 'btn btn-info'
   end
 end

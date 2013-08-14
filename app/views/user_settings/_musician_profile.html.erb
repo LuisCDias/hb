@@ -1,0 +1,26 @@
+<section class="widget">
+  <header>
+    <h4><i class="icon-user"></i> Musician Profile</h4>
+   </header>
+   <div class="body">
+     <div class="form-horizontal label-left">
+       <div class="row-fluid">
+         <div class="span4">
+           <div class="text-align-center">
+             <%= image_tag profile.soundcloud_avatar, {
+               style: "height: 112px;",
+               class: "img img-circle"
+             } %>
+           </div>
+         </div>
+         <div class="span8">
+           <h3><%= profile.soundcloud_username %></h3>
+           <h5>
+             Soundcloud profile:
+             <%= link_to profile.soundcloud_profile, profile.soundcloud_profile %>
+           </h5>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>

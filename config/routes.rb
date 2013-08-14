@@ -4,7 +4,11 @@ Hb::Application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
 
-  resources :campaigns, only: [:index, :show] do
+  devise_scope :user do
+    get "users/sign_out", to: 'devise/sessions#destroy', as: :sign_out
+  end
+
+  resources :campaigns, only: [:index, :show, :new, :create] do
     resources :reservations, only: [:create]
   end
   get 'music', to: 'campaigns#index', as: :music
@@ -12,4 +16,9 @@ Hb::Application.routes.draw do
   resource :launchbase, only: [:show]
   resource :artist_lounge, only: [:show]
   resource :user_settings, only: [:show]
+
+  get 'soundcloud/connect', to: 'soundcloud_connection#connect',
+    as: :soundcloud_connect
+  get 'soundcloud/connected', to: 'soundcloud_connection#connected',
+    as: :soundcloud_connected
 end

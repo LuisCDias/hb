@@ -1,0 +1,25 @@
+<section class="widget">
+  <header>
+    <h4><i class="icon-user"></i> Fan Profile</h4>
+  </header>
+  <div class="body">
+    <div class="form-horizontal label-left">
+      <div class="row-fluid">
+        <div class="span4">
+          <div class="text-align-center">
+            <%= image_tag current_user.avatar %>
+          </div>
+        </div>
+        <div class="span8">
+          <h3 class="no-margin"><%= current_user.name %></h3>
+          <h5>Joined
+            <small>
+              <%= time_ago_in_words current_user.created_at %>
+              ago
+            </small>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

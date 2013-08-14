@@ -1,25 +1,25 @@
 <%= div_for campaign, class: 'span3' do %>
   <section class="widget campaign">
     <header>
-      <h4><%= link_to '#', campaign_path(campaign) %></h4>
-      <p>by  </p>
+      <h4><%= campaign.name %></h4>
+      <p>by <%= campaign.musician_name %></p>
     </header>
     <div class="body">
       <div class="text-align-center">
-        <%= link_to '#', class: 'stratus' do %>
-          <%= image_tag class: 'campaignartwork' %>
+        <%= link_to campaign.track_permalink, class: 'stratus' do %>
+          <%= image_tag campaign.artwork_for_track, class: 'campaignartwork' %>
         <% end %>
       </div>
       <br />
       <ul class="server-stats">
         <li>
           <div class="key pull-right">
-            %
+            <%= campaign.progress %>%
           </div>
           <div class="stat">
-            <div class="info"> left</div>
+            <div class="info"><%= campaign.reservations_left %> left</div>
             <div class="progress progress-striped">
-              <div class="bar" style="width: 0%"></div>
+              <div class="bar" style="width: <%= campaign.reservations.count%>%"></div>
             </div>
           </div>
         </li>

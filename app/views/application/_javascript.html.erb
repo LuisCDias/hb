@@ -1,5 +1,7 @@
 <%= javascript_include_tag :application %>
 
+<%= javascript_include_tag "http://stratus.sc/stratus.js" %>
+
 <%= yield :javascript %>
 
 <% if Rails.env.test? %>

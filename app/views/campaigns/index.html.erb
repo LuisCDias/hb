@@ -1,5 +1,6 @@
-<body class="background-light">
-  <div class="wrap" id="home">
+<% content_for(:extra_body_classes, 'background-light') %>
+<%= render 'filter' %>
+<div class="wrap" id="home">
     <div class="content container-fluid">
       <div class="row-fluid">
         <section class="widget">
@@ -31,4 +32,3 @@
       </div>
     </div>
   </div>
-</body>
