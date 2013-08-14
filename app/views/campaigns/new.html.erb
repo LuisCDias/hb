@@ -1,23 +1,35 @@
-<h2>Create a campaign</h2>
-
-<%= form_for @campaign do |form| %>
-  <% if @campaign.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
-    <ul>
-    <% @campaign.errors.full_messages.each do |msg| -%>
-      <li><%= msg %></li>
-    <% end -%>
-    </ul>
+<%= content_for(:extra_body_classes, 'background-light sidebar-hidden') %>
+<div class="wrap" id="home">
+  <div class="content container-fluid">
+    <div class="row-fluid">
+      <%= form_for @campaign do |form| %>
+       <% if @campaign.errors.any? %>
+         <div id="error_explanation">
+           <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+           <ul>
+           <% @campaign.errors.full_messages.each do |msg| -%>
+             <li><%= msg %></li>
+           <% end -%>
+           </ul>
+          </div>
+       <% end %>
+      <div class="span6 offset3">
+        <h3>1. Musician, Campaign Name &amp; Category</h3>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6 offset3 widget text-align-center">
+        <%= form.text_field :musician_name, placeholder: 'Musician name', class: 'span12'  %>
+        <%= form.text_field :name, placeholder: 'Campaign name', class: 'span12' %>
+      </div>
+    </div>
   </div>
-  <% end %>
+</div>
   <div class="field">
     <h4>Enter your artist name</h4>
-    <%= form.text_field :musician_name %>
   </div>
   <div class="field">
     <h4>Give your campaign a name</h4>
-    <%= form.text_field :name %>
   </div>
   <div class="field">
     <h4>Select a category for your campaign</h4>

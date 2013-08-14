@@ -30,6 +30,10 @@ class SoundcloudConnectionController < AuthorizedController
     end
   end
 
+  def disconnect
+    current_user.musician.soundcloud_account.destroy
+  end
+
   private
 
   def soundcloud_client

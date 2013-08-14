@@ -2,7 +2,10 @@ Hb::Application.routes.draw do
   root to: 'homes#show', via: :get
 
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
+    controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks',
+      registrations: 'users/registrations'
+    }
 
   devise_scope :user do
     get "users/sign_out", to: 'devise/sessions#destroy', as: :sign_out
@@ -21,4 +24,6 @@ Hb::Application.routes.draw do
     as: :soundcloud_connect
   get 'soundcloud/connected', to: 'soundcloud_connection#connected',
     as: :soundcloud_connected
+  delete 'soundcloud/disconnect', to: 'soundcloud_connection#disconnect',
+    as: :disconnect_soundcloud
 end
