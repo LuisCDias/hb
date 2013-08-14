@@ -1,20 +1,30 @@
 <h2>Create a campaign</h2>
 
 <%= form_for @campaign do |form| %>
-  <div>
-    <%= form.label :musician_name, 'Musician name' %>
+  <% @campaign.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+    <ul>
+    <% @campaign.errors.full_messages.each do |msg| -%>
+      <li><%= msg %></li>
+    <% end -%>
+    </ul>
+  </div>
+  <% end %>
+  <div class="field">
+    <h4>Enter your artist name</h4>
     <%= form.text_field :musician_name %>
   </div>
-  <div>
-    <%= form.label :name, 'Campaign name' %>
+  <div class="field">
+    <h4>Give your campaign a name</h4>
     <%= form.text_field :name %>
   </div>
-  <div>
-    <%= form.label :category_id, 'Select a category for the campaign' %>
+  <div class="field">
+    <h4>Select a category for your campaign</h4>
     <%= form.collection_select(:category_id, Category.all, :id, :name) %>
   </div>
-  <div>
-    <%= form.label :requested_likes, 'Number of likes requested' %>
+  <div class="field">
+    <h4>How many reservations would you like for early release</h4>
     <%= form.number_field :requested_likes %>
   </div>
   <div>
