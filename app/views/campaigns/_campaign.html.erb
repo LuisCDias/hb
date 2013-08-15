@@ -2,12 +2,13 @@
   <section class="widget campaign">
     <header>
       <h4><%= campaign.name %></h4>
+      <p>by <%= campaign.musician_name %></p>
     </header>
     <div class="body">
       <div class="text-align-center">
-      <%= link_to campaign.track_permalink, class: 'stratus' do %>
-        <%= campaign.track_permalink %>
-      <% end %>
+        <%= link_to campaign.track_permalink, class: 'stratus' do %>
+          <%= image_tag campaign.artwork_for_track, class: 'campaignartwork' %>
+        <% end %>
       </div>
       <br />
       <ul class="server-stats">

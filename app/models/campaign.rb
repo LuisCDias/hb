@@ -19,19 +19,24 @@ class Campaign < ActiveRecord::Base
   end
 
   def track_info
+    client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
     client.get("/tracks/#{track_id}")
   end
 
   def artwork_for_track
-    client.get("/tracks/#{track_id}").artwork_url.sub("large", "t200x200")
+    track_info.artwork_url.sub("large", "t200x200")
   end
 
   def track_permalink
-    client.get("/tracks/#{track_id}").permalink_url
+    track_info.permalink_url
   end
 
   def playcount
     track_info.playback_count
+  end
+
+  def downloadcount
+    self.track_info.download_count
   end
 
   def successful?
@@ -59,9 +64,5 @@ class Campaign < ActiveRecord::Base
       downloadable: false,
       description: "Help launch this track at http://www.headblendr.com/campaigns/#{id}"
     })
-  end
-
-  def client
-    Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])
   end
 end
