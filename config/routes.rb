@@ -16,6 +16,7 @@ Hb::Application.routes.draw do
   resource :launchbase, only: [:show]
   resource :artist_lounge, only: [:show]
   resource :user_settings, only: [:show]
+  resources :musicians, only: [:show]
 
   get 'soundcloud/connect', to: 'soundcloud_connection#connect',
     as: :soundcloud_connect

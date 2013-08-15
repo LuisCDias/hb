@@ -1,0 +1,140 @@
+<% content_for(:extra_body_classes, 'background-light sidebar-hidden') %>
+<div class="wrap" id="home">
+  <div class="content container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <h2 class="page-title widget">
+          <%= @musician.soundcloud_account.soundcloud_username %>
+        </h2>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="span4 widget">
+          <h4>Biography</h4>
+          <p class="hidden-iphone"><%= @musician.description %></p>
+          <%= link_to @musician.soundcloud_account.soundcloud_profile do %>
+            <button class="btn btn-info btncampaign">Soundcloud Page</button>
+          <% end %>
+        </div>
+        <div class="span4 widget">
+          <section class="widget-overview">
+            <header>
+              <h4><i class="icon-lightbulb"></i> Stats Overview</h4>
+            </header>
+            <div class="body">
+              <ul class="overall-stats">
+                <li>
+                  <div class="icon pull-left">
+                    <i class="icon-play"></i>
+                  </div>
+                  <span class="key">Total Campaign Plays</span>
+                  <div class="value pull-right">
+                    <span class="badge badge-info">
+                      <%= @musician.total_campaign_playcount %>
+                    </span>
+                  </div>
+                 </li>
+                 <li>
+                  <div class="icon pull-left">
+                    <i class="icon-music"></i>
+                  </div>
+                  <span class="key">Created Campaigns</span>
+                  <div class="value pull-right">
+                    <span class="badge badge-info">
+                      <%= @musician.campaigns.count %>
+                    </span>
+                  </div>
+                  </li>
+                  <li>
+                    <div class="icon pull-left">
+                      <i class="icon-star"></i>
+                    </div>
+                    <span class="key">Successful Campaigns</span>
+                    <div class="value pull-right">
+                      <span class="badge badge-info">
+                        <%= @musician.successful_campaigns %>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon pull-left">
+                      <i class="icon-heart"></i>
+                    </div>
+                    <span class="key">Soundcloud Followers</span>
+                    <div class="value pull-right">
+                      <span class="badge badge-info">
+                        <%= @musician.soundcloud_followers_count %>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon pull-left">
+                      <i class="icon-rocket"></i>
+                    </div>
+                    <span class="key">Total Launch Requests</span>
+                    <div class="value pull-right">
+                      <span class="badge badge-info">
+                        <%= @musician.total_launch_requests_achieved %>
+                      </span>
+                    </div>
+                    </li>
+                    <li></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="span4">
+          <div class="text-align-center">
+            <%= image_tag @musician.soundcloud_account.soundcloud_avatar, {style: "height:230px;"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <h4 class="widget">Campaigns by <%= @musician.soundcloud_account.soundcloud_username %></h4>
+       </div>
+     </div>
+     <div class="row-fluid">
+        <div class="span12">
+         <% @musician.campaigns.each do |campaign| %>
+            <div class="span3">
+              <section class="widget campaign">
+                <header>
+                  <h4><%= campaign.name %></h4>
+                  <p>by <%= link_to campaign.musician_name, musician_path(campaign.musician) %></p>
+                </header>
+                <div class="body">
+                  <div class="text-align-center">
+                    <%= link_to campaign.track_permalink, class: 'stratus' do %>
+                      <%= image_tag campaign.artwork_for_track %>
+                    <% end %>
+                  </div>
+                  <br />
+                  <ul class="server-stats">
+                    <li>
+                      <div class="key pull-right">
+                        <%= campaign.progress %>
+                      </div>
+                      <div class="stat">
+                        <div class="info">
+                          <%= campaign.reservations_left %>
+                        </div>
+                        <div class="progress progress-striped">
+                          <div class="bar" style="width: <%= campaign.progress %>%;"></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="text-align-center">
+                    <%= campaign_controls_for campaign, current_user %>
+                  </div>
+                </div>
+               </section>
+             </div>
+           <% end %>
+        </div>
+     </div>
+  </div>
+</div>

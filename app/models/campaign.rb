@@ -1,18 +1,9 @@
 class Campaign < ActiveRecord::Base
-  include Rails.application.routes.url_helpers
 
   belongs_to :category
   belongs_to :musician
   has_many :backers, through: :reservations, source: :user
   has_many :reservations
-
-  def base_uri
-    campaign_path(self)
-  end
-
-  has_attached_file :full_track,
-    storage: :s3,
-    s3_credentials: S3_CREDENTIALS
 
   def save
     super
@@ -35,7 +26,20 @@ class Campaign < ActiveRecord::Base
     track_info.permalink_url
   end
 
+  def playcount
+    track_info.playback_count
+  end
+
+  def successful?
+    true if reservations_left <= requested_likes
+  end
+
   def progress
+    if reserved == 0
+      0
+    else
+      (100 * reserved / requested_likes).round
+    end
   end
 
   def reserved

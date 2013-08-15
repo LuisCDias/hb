@@ -7,6 +7,30 @@ class Musician < ActiveRecord::Base
     musician_info.description
   end
 
+  def soundcloud_followers_count
+    musician_info.followers_count
+  end
+
+  def successful_campaigns
+    successful_campaigns = []
+    campaigns.collect do |campaign|
+      successful_campaigns << campaign.successful?
+    end
+    successful_campaigns.length
+  end
+
+  def total_campaign_playcount
+    campaigns.inject(0) do |sum, campaign|
+      sum + campaign.playcount
+    end
+  end
+
+  def total_launch_requests_achieved
+    campaigns.inject(0) do |sum, campaign|
+      sum + campaign.reservations.length
+    end
+  end
+
   private
 
   def musician_info
