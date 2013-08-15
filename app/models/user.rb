@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
       password: Devise.friendly_token[0,20]
     )
   end
+
+  def musician?
+    true unless musician == nil
+  end
 end

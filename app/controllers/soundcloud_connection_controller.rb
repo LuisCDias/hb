@@ -31,7 +31,12 @@ class SoundcloudConnectionController < AuthorizedController
   end
 
   def disconnect
-    current_user.musician.soundcloud_account.destroy
+    musician = Musician.find(params[:id])
+    if musician.destroy
+      redirect_to user_settings_url, notice: 'Your Soundcloud account has been disconnected'
+    else
+      redirect_to user_settings_url, notice: 'Sorry, please try again later'
+    end
   end
 
   private

@@ -1,5 +1,5 @@
 class UserSettingsController < AuthorizedController
   def show
-    @musician = current_user.musician
+    @user = current_user
   end
 end

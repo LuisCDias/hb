@@ -5,15 +5,15 @@
     </header>
     <div class="body">
       <div class="text-align-center">
-        <%= link_to campaign.track_permalink, class: 'stratus' do %>
-          <%= image_tag campaign.artwork_for_track, class: 'campaignartwork' %>
-        <% end %>
+      <%= link_to campaign.track_permalink, class: 'stratus' do %>
+        <%= campaign.track_permalink %>
+      <% end %>
       </div>
       <br />
       <ul class="server-stats">
         <li>
           <div class="key pull-right">
-           %
+            %
           </div>
           <div class="stat">
             <div class="info"><%= campaign.reservations_left %> left</div>

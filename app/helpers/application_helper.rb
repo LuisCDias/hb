@@ -2,17 +2,27 @@ module ApplicationHelper
   def navigation_for(user)
     if user.nil?
       render 'visitor_nav'
+    elsif user.musician?
+      render 'musician_nav'
     else
-      render 'nav'
+      render 'fan_nav'
     end
   end
 
   def campaign_controls_for(campaign, user)
-    if campaign.is_available_for?(user) && campaign.musician.user != user
+    if campaign.is_available_for?(user)
       reserve_campaign_button campaign
+    elsif campaign.musician.user == user
+      campaign_owner_button campaign
     else
       campaign_reserved_button
     end
+  end
+
+  def campaign_owner_button(campaign)
+    link_to 'Your awesome campaign',
+      campaign_path(campaign),
+      class: 'btn btn-info'
   end
 
   def reserve_campaign_button(campaign)

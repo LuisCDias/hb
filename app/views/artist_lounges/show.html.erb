@@ -19,7 +19,7 @@
               <i class="icon-calendar"></i>
             </div>
             <div class="description">
-              <strong><%= @campaigns.count %></strong> active campaigns
+              <strong><%= @lounge.campaign_count %></strong> active campaigns
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
               </tr>
             </thead>
             <tbody>
-            <% @campaigns.each do |campaign| -%>
+            <% @lounge.campaigns.each do |campaign| -%>
               <tr>
                 <td><%= campaign.id %></td>
                 <td><%= campaign.name %></td>
@@ -133,10 +133,10 @@
           <div class="widget">
             <h4>Musician Profile</h4>
             <h5>
-              <%= image_tag current_user.musician.soundcloud_account.soundcloud_avatar, {style: "height: 25px;"} %>
+              <%= image_tag @lounge.soundcloud_avatar, {style: "height: 25px;"} %>
             </h5>
             <p class="hidden-iphone">
-              <%= current_user.musician.description %>
+              <%= @lounge.musician_description %>
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 class Musician < ActiveRecord::Base
   belongs_to :user
   has_many :campaigns
-  has_one :soundcloud_account
+  has_one :soundcloud_account, dependent: :destroy
 
   def description
     musician_info.description
@@ -38,6 +38,6 @@ class Musician < ActiveRecord::Base
   end
 
   def musician_client
-    Soundcloud.new access_token: soundcloud_account.access_token
+    Soundcloud.new(access_token: soundcloud_account.access_token)
   end
 end

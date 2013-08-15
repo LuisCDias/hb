@@ -42,7 +42,7 @@
       <div class="span6 offset3 widget text-align-center">
         <%= form.collection_select(
          :track_id,
-         @campaign.musician.soundcloud_account.get_tracks_for_musician,
+         @campaign.musician.user.soundcloud_account.get_tracks_for_musician,
          :id,
          :title,
           {required: true,

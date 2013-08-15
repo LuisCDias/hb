@@ -7,14 +7,14 @@
       <div class="row-fluid">
         <div class="span4">
           <div class="text-align-center">
-            <%= image_tag current_user.avatar %>
+            <%= image_tag fan.avatar %>
           </div>
         </div>
         <div class="span8">
-          <h3 class="no-margin"><%= current_user.name %></h3>
+          <h3 class="no-margin"><%= fan.name %></h3>
           <h5>Joined
             <small>
-              <%= time_ago_in_words current_user.created_at %>
+              <%= time_ago_in_words fan.created_at %>
               ago
             </small>
           </h5>

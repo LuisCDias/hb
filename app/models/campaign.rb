@@ -18,12 +18,16 @@ class Campaign < ActiveRecord::Base
     requested_likes.to_i - reserved
   end
 
+  def track_info
+    client.get("/tracks/#{track_id}")
+  end
+
   def artwork_for_track
-    track_info.artwork_url.sub("large", "t200x200")
+    client.get("/tracks/#{track_id}").artwork_url.sub("large", "t200x200")
   end
 
   def track_permalink
-    track_info.permalink_url
+    client.get("/tracks/#{track_id}").permalink_url
   end
 
   def playcount
@@ -46,19 +50,18 @@ class Campaign < ActiveRecord::Base
     reservations.length
   end
 
-  def track_info
-    client = Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])
-    client.get("/tracks/#{track_id}")
-  end
-
   def update_campaign_track_metadata
-    client = Soundcloud.new(access_token: musician.soundcloud_account.access_token)
-    track = client.get("/tracks/#{self.track_id}")
-    client.put(track.uri, track: {
+    track_client = Soundcloud.new(access_token: musician.soundcloud_account.access_token)
+    track = track_client.get("/tracks/#{self.track_id}")
+    track_client.put(track.uri, track: {
       sharing: 'public',
       embedabble_by: 'all',
       downloadable: false,
       description: "Help launch this track at http://www.headblendr.com/campaigns/#{id}"
     })
+  end
+
+  def client
+    Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])
   end
 end

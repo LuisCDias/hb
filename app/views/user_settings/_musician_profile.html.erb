@@ -21,7 +21,8 @@
            </h5>
          </div>
          <div class="span8">
-          <%= button_to 'Disconnect Soundcloud Account', disconnect_soundcloud_path, method: :delete %>
+           <%= button_to 'Disconnect Soundcloud Account',
+             disconnect_soundcloud_path(profile.musician), method: :delete %>
          </div>
       </div>
     </div>

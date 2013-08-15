@@ -3,11 +3,11 @@
     <div class="content container-fluid">
       <div class="row-fluid">
         <div class="span6">
-          <%= render 'fan_profile' %>
+          <%= render 'fan_profile', fan: current_user %>
         </div>
         <div class="span6">
           <% if current_user.musician? %>
-            <%= render 'musician_profile', profile: @musician.soundcloud_account %>
+            <%= render 'musician_profile', profile: current_user.soundcloud_account %>
           <% else %>
             <div class="span8">
               <%= link_to 'Connect your Soundcloud account',
