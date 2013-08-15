@@ -1,6 +1,9 @@
 <nav id="sidebar" class="sidebar nav-collapse collapse">
   <ul id="side-nav" class="side-nav">
     <li class="active"><a href="#">Category Filter</a></li>
-    <li><a href="#">All categories</a></li
+    <li><a href="#">All categories</a></li>
+    <% Category.all.each do |category| -%>
+    <li><%= link_to "#{category.name} (#{category.campaigns.count})", "#" %></li>
+    <% end -%>
   </ul>
 </nav>

@@ -1,9 +1,10 @@
 class Campaign < ActiveRecord::Base
-
   belongs_to :category
   belongs_to :musician
   has_many :backers, through: :reservations, source: :user
   has_many :reservations
+
+  after_create :newcampaignmail
 
   def save
     super
@@ -36,11 +37,15 @@ class Campaign < ActiveRecord::Base
   end
 
   def downloadcount
-    self.track_info.download_count
+    track_info.download_count
   end
 
   def successful?
-    true if reservations_left <= requested_likes
+    if reservations_left == 0
+      true
+    else
+      false
+    end
   end
 
   def progress
@@ -64,5 +69,17 @@ class Campaign < ActiveRecord::Base
       downloadable: false,
       description: "Help launch this track at http://www.headblendr.com/campaigns/#{id}"
     })
+  end
+
+  def newcampaignmail
+    UserMailer.campaign_created(self.musician.user).deliver
+  end
+
+  def self.search(search)
+    if search
+      where('name LIKE :search', :search => "%#{search}%")
+    else
+      scoped
+    end
   end
 end

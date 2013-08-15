@@ -2,33 +2,9 @@
 <%= render 'filter' %>
 <div class="wrap" id="home">
     <div class="content container-fluid">
-      <div class="row-fluid">
-        <section class="widget">
-          <header>
-            <h4><i class="icon-music"></i> All Genres</h4>
-          </header>
-          <div class="body">
-            <div class="row-fluid margin-bottom text-align-center">
-              <div class="span12">
-                <div class="btn-group" data-toggle="buttons-radio">
-                  <button type="button" class="btn btn-info active">
-                    Featured
-                  </button>
-                  <button type="button" class="btn btn-info active">
-                    Newest
-                  </button>
-                  <button type="button" class="btn btn-info active">
-                    Successful
-                  </button>
-                </div>
-              </div>
-              <h5>click artwork to play</h5>
-            </div>
-          </div>
-        </section>
-      </div>
       <div id="campaigngroup">
         <%= render @campaigns %>
       </div>
     </div>
-  </div>
+    <%= will_paginate @campaigns %>
+</div>

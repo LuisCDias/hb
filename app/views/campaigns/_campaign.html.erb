@@ -2,7 +2,7 @@
   <section class="widget campaign">
     <header>
       <h4><%= campaign.name %></h4>
-      <p>by <%= campaign.musician_name %></p>
+      <p>by <%= link_to campaign.musician_name, musician_path(campaign.musician) %></p>
     </header>
     <div class="body">
       <div class="text-align-center">

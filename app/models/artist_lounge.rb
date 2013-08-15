@@ -15,6 +15,10 @@ class ArtistLounge
     @artist.soundcloud_account.soundcloud_avatar
   end
 
+  def soundcloud_followers
+    @artist.soundcloud_followers_count
+  end
+
   def musician_description
     @artist.description
   end
