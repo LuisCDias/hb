@@ -25,7 +25,6 @@ class CampaignsController < ApplicationController
   def campaign_params
     params.require(:campaign).permit(
       :category_id,
-      :full_track,
       :musician_name,
       :name,
       :requested_likes,
