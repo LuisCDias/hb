@@ -3,8 +3,16 @@
 <div class="wrap" id="home">
     <div class="content container-fluid">
       <div id="campaigngroup">
-        <%= render @campaigns %>
-      </div>
+      <% @campaigns.in_groups_of(4, false).each do |group| %>
+        <div class="row-fluid">
+        <% group.each do |campaign| %>
+          <%= render campaign %>
+        <% end %>
+        </div>
+      <% end %>
     </div>
-    <%= will_paginate @campaigns %>
+    <div class="text-align-center widget">
+      <%= will_paginate @campaigns %>
+    </div>
+  </div>
 </div>

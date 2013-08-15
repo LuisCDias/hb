@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   def index
-    @campaigns = Campaign.search(params[:search]).paginate(:per_page => 1, :page => params[:page])
+    @campaigns = Campaign.search(params[:search]).paginate(:per_page => 8, :page => params[:page])
   end
 
   def new
@@ -14,6 +14,10 @@ class CampaignsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @campaign = Campaign.find(params[:id])
   end
 
   private

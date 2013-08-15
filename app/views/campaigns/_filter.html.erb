@@ -1,9 +1,13 @@
 <nav id="sidebar" class="sidebar nav-collapse collapse">
   <ul id="side-nav" class="side-nav">
     <li class="active"><a href="#">Category Filter</a></li>
-    <li><a href="#">All categories</a></li>
-    <% Category.all.each do |category| -%>
-    <li><%= link_to "#{category.name} (#{category.campaigns.count})", "#" %></li>
-    <% end -%>
+    <li><%= link_to "All Categories (#{Campaign.all.count})", music_path %></li>
+    <% Category.all.each do |c| %>
+<li>
+  <%= form_tag campaigns_path, :method => 'get', :id => "genre_search" do %>
+    <%= hidden_field_tag :search, params[:search], value: c.id %>
+    <%= submit_tag " #{c.name} (#{Category.find(c.id).campaigns.count})", :name => nil, class: "btn btn-link", id: "outborder" %></li>
+  <% end %>
+<% end %> 
   </ul>
 </nav>

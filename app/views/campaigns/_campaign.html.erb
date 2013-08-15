@@ -14,12 +14,12 @@
       <ul class="server-stats">
         <li>
           <div class="key pull-right">
-            %
+            <%= campaign.progress %>%
           </div>
           <div class="stat">
             <div class="info"><%= campaign.reservations_left %> left</div>
             <div class="progress progress-striped">
-              <div class="bar" style="width: <%= campaign.reservations.count%>%"></div>
+              <div class="bar" style="width: <%= campaign.progress %>%;"></div>
             </div>
           </div>
         </li>

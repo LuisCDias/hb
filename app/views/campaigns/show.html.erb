@@ -1,0 +1,97 @@
+<% content_for(:extra_body_classes, 'background-light sidebar-hidden') %>
+<div class="wrap" id="home">
+    <div class="content container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h2 class="page-title widget">
+                    <%= @campaign.name %> by <%= @campaign.musician_name %> <small> <%= @campaign.category.name %></small>
+                </h2>
+                <div class="progress  progress-striped active">
+                    <div class="bar" style="width: <%= @campaign.progress %>%;"></div>
+                </div>
+            </div>
+        </div> 
+        <div class="row-fluid">
+            <div class="span9 widget">
+                <div class="span3 text-align-center">
+                    <%= link_to @campaign.track_permalink, class: "stratus" do %>
+                        <%= image_tag @campaign.artwork_for_track, class: "campaignartwork " %>
+                    <% end %>
+                </div>
+                <div class="box span2">
+                    <div class="big-text">
+                        <%= @campaign.playcount %>
+                    </div>
+                    <div class="description">
+                        Plays 
+                    </div>
+                </div>
+                <div class="box span2">
+                    <div class="big-text">
+                        <%= @campaign.reserved %>
+                    </div>
+                    <div class="description">
+                        Launch Requests Made
+                    </div>
+                </div>
+                <div class="box span2">
+                    <div class="big-text">
+                        <%= @campaign.reservations_left %>
+                    </div>
+                    <div class="description">
+                        Launch Requests Left
+                    </div>
+                </div>
+                <div class="box span2">
+                    <div class="big-text">
+                        <%= @campaign.progress %>%
+                    </div>
+                    <div class="description">
+                        Campaign Progress
+                    </div>
+                </div>
+                <div class="span9">
+                    <%= campaign_controls_for @campaign, current_user %>
+                </div>
+         
+
+            </div>
+
+            <div class="span3 widget">
+                <h4>Musician Profile</h4>
+        <h5><%= image_tag @campaign.musician.soundcloud_account.soundcloud_avatar, {style: "height: 25px;"} %> Ovaal</h5>
+
+        <p class="hidden-phone"><%= @campaign.musician.description %></p>
+        <button type="button" class="btn btn-info btncampaign" data-placement="top" data-original-title=".btn .btn-info">
+                                        &nbsp;Soundcloud&nbsp;
+                                    </button>
+                                    <button type="button" class="btn btn-info btncampaign" data-placement="top" data-original-title=".btn .btn-info">
+                                        &nbsp;Facebook&nbsp;
+                                    </button>
+            </div>
+
+
+        </div>
+        <div class="row-fluid">
+            <div class="span12 ">
+                <h4 class="widget">Other Campaigns by <%= @campaign.musician_name %> <small>(showing 4 out of <%= @campaign.musician.campaigns.count %>)</small></h4>
+            </div>
+        </div> 
+        
+        <div class="row-fluid">
+            <%= render @campaign.musician.campaigns.last(4) %>
+        </div>
+
+        <div class="row-fluid">
+
+            <%= link_to music_path do %>
+            <button type="button" class="btn btn-info pull-right" data-placement="top" data-original-title=".btn .btn-info">
+                                        &nbsp;more campaigns from this artist&nbsp;
+                                    </button>
+                                    <% end %>
+        </div>
+       
+        </div>   
+
+    </div>
+</div>

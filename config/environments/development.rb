@@ -29,5 +29,18 @@ Hb::Application.configure do
 
   config.action_controller.action_on_unpermitted_parameters = :raise
 
-  config.action_mailer.default_url_options = { host: 'hb.local' }
+   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true #try to force sending in development 
+
+  config.action_mailer.smtp_settings = {
+  :address        => 'smtp.mandrillapp.com',
+  :port           => 587,
+  :domain         => 'smtp.mandrillapp.com',
+  :authentication => :plain,
+  :user_name      => 'tiago@headblendr.com',
+  :password       => 'Zz_E0y4KVIobuwhUeshRGQ',
+  :enable_starttls_auto => true
+}
 end

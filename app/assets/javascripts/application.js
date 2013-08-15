@@ -10,6 +10,16 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+///= require jquery
+//= require jquery-migrate-min
+//= require select2.js
+//= require jquery.dataTables.min.js
+//= require backbone/underscore-min.js
+//= require backbone/backbone-min.js
+//= require backbone/backbone-pageable.js
+//= require backgrid/backgrid.js
+//= require backgrid/backgrid-paginator.js
+//= require tables-dynamic.js
 //= require jquery_ujs
+//= require bootstrap.min.js
 //= require_tree .

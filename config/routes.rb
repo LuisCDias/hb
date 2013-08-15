@@ -24,4 +24,9 @@ Hb::Application.routes.draw do
     as: :soundcloud_connected
   delete 'soundcloud/disconnect', to: 'soundcloud_connection#disconnect',
     as: :disconnect_soundcloud
+
+  get 'pages/home' => 'high_voltage/pages#about', id: 'about'
+  get 'pages/home' => 'high_voltage/pages#privacy', id: 'privacy'
+  get 'pages/home' => 'high_voltage/pages#fans', id: 'fans'
+  get 'pages/home' => 'high_voltage/pages#musicians', id: 'musicians'
 end

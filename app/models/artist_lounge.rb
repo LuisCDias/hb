@@ -22,4 +22,8 @@ class ArtistLounge
   def musician_description
     @artist.description
   end
+
+  def download_counts
+    campaigns.sum { |c| c.downloadcount }
+  end
 end
