@@ -38,8 +38,8 @@ class SoundcloudConnectionController < AuthorizedController
 
   def soundcloud_client
     @soundcloud_client ||= Soundcloud.new(
-      client_id: ENV['SC_LOCAL_ID'],
-      client_secret: ENV['SC_LOCAL_SECRET'],
+      client_id: ENV['SC_CLIENT_ID'],
+      client_secret: ENV['SC_CLIENT_SECRET'],
       redirect_uri: soundcloud_connected_url
     )
   end
