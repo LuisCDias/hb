@@ -54,7 +54,7 @@ class Campaign < ActiveRecord::Base
 
   def track_info
     begin
-     client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
+     client = Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])
      client.get("/tracks/#{track_id}")
     rescue Exception
       client.get("/tracks/105638518")
