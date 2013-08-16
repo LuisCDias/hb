@@ -82,5 +82,18 @@ Hb::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = { host: 'hb.com' }
+  config.action_mailer.default_url_options = { :host => 'headblendr-staging.herokuapp.com' }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true #try to force sending in development
+
+  config.action_mailer.smtp_settings = {
+  :address        => 'smtp.mandrillapp.com',
+  :port           => 587,
+  :domain         => 'smtp.mandrillapp.com',
+  :authentication => :plain,
+  :user_name      => 'tiago@headblendr.com',
+  :password       => 'Zz_E0y4KVIobuwhUeshRGQ',
+  :enable_starttls_auto => true
+}
 end
