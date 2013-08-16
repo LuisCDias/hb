@@ -47,13 +47,13 @@ class Campaign < ActiveRecord::Base
       description: "Track launched at http://www.headblendr.com"
     })
   end
-  
+
   def reserved
     reservations.length
   end
 
   def track_info
-    client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
+    client = Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])
     client.get("/tracks/#{track_id}")
   end
 
@@ -82,7 +82,7 @@ class Campaign < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('category_id LIKE :search', :search => "%#{search}%") 
+      where('category_id LIKE :search', :search => "%#{search}%")
     else
       scoped
     end
