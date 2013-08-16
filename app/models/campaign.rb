@@ -28,6 +28,11 @@ class Campaign < ActiveRecord::Base
   end
 
   def progress
+    if reserved == 0
+      0
+    else
+      (100 * reserved / requested_likes.to_i).round
+    end
   end
 
   def successful?
