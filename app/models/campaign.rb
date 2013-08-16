@@ -86,7 +86,7 @@ class Campaign < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('category_id LIKE :search', :search => "%#{search}%")
+      where(category_id: search)
     else
       scoped
     end
