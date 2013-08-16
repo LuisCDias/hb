@@ -10,10 +10,10 @@ module ApplicationHelper
   end
 
   def campaign_controls_for(campaign, user)
-    if campaign.is_available_for?(user) && campaign.musician.user != user
-      reserve_campaign_button campaign
-    elsif campaign.successful?
+    if campaign.successful?
       campaign_already_launched_button
+    elsif campaign.is_available_for?(user) && campaign.musician.user != user
+      reserve_campaign_button campaign
     else
       campaign_reserved_button
     end

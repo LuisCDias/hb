@@ -17,7 +17,11 @@
             <%= campaign.progress %>%
           </div>
           <div class="stat">
-            <div class="info"><%= campaign.reservations_left %> left</div>
+            <% if campaign.successful? %>
+              <div class="info">Campaign launched</div>
+            <% else %>
+              <div class="info"><%= campaign.reservations_left %> left</div>
+            <% end %>
             <div class="progress progress-striped">
               <div class="bar" style="width: <%= campaign.progress %>%;"></div>
             </div>
