@@ -30,7 +30,11 @@ class Musician < ActiveRecord::Base
   private
 
   def musician_info
-    musician_client.get("/me")
+    begin
+      musician_client.get("/me")
+    rescue Exception
+      musician_client.get("/users/54577589")
+    end
   end
 
   def musician_client
