@@ -57,13 +57,10 @@
                 <div class="span9">
                     <%= campaign_controls_for @campaign, current_user %>
                 </div>
-         
-
             </div>
-
             <div class="span3 widget">
                 <h4>Musician Profile</h4>
-        <h5><%= image_tag @campaign.musician.soundcloud_account.soundcloud_avatar, {style: "height: 25px;"} %> Ovaal
+                <h5><%= image_tag @campaign.musician.soundcloud_account.soundcloud_avatar, {style: "height: 25px;"} %> <%= @campaign.musician_name %>
         </h5>
 
         <p class="hidden-phone"><%= @campaign.musician.description %></p>

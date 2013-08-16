@@ -31,7 +31,7 @@ class Campaign < ActiveRecord::Base
     if reserved == 0
       0
     else
-      (100 * reserved / requested_likes.to_i).round
+      (100 * reserved.to_i / requested_likes.to_i).round
     end
   end
 
