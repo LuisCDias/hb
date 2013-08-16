@@ -1,6 +1,6 @@
 class Musician < ActiveRecord::Base
   belongs_to :user
-  has_many :campaigns
+  has_many :campaigns, dependent: :destroy
   has_one :soundcloud_account, dependent: :destroy
 
   def description
@@ -9,14 +9,6 @@ class Musician < ActiveRecord::Base
 
   def soundcloud_followers_count
     musician_info.followers_count
-  end
-
-  def successful_campaigns
-    successful_campaigns = []
-    campaigns.collect do |campaign|
-      successful_campaigns << campaign.successful?
-    end
-    successful_campaigns.length
   end
 
   def total_campaign_playcount
@@ -29,6 +21,10 @@ class Musician < ActiveRecord::Base
     campaigns.inject(0) do |sum, campaign|
       sum + campaign.reservations.length
     end
+  end
+
+  def soundcloud_page
+    musician_info.permalink_url
   end
 
   private

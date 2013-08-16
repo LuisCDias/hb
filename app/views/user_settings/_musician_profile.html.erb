@@ -22,7 +22,7 @@
          </div>
          <div class="span8">
            <%= button_to 'Disconnect Soundcloud Account',
-             disconnect_soundcloud_path(profile.musician), method: :delete %>
+             disconnect_soundcloud_path(id: profile.musician), method: :delete, confirm: "If you disconnect, all your campaigns will be lost, are you sure?" %>
          </div>
       </div>
     </div>

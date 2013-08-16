@@ -1,7 +1,7 @@
 <%= div_for campaign, class: 'span3' do %>
   <section class="widget campaign">
     <header>
-      <h4><%= campaign.name %></h4>
+      <h4><%= link_to campaign.name, campaign_path(campaign) %></h4>
       <p>by <%= link_to campaign.musician_name, musician_path(campaign.musician) %></p>
     </header>
     <div class="body">

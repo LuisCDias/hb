@@ -19,8 +19,8 @@
     </div>
     <div class="row-fluid">
       <div class="span6 offset3 widget text-align-center">
-        <%= form.text_field :musician_name, placeholder: 'Musician name', class: 'span12'  %>
-        <%= form.text_field :name, placeholder: 'Campaign name', class: 'span12' %>
+        <%= form.text_field :musician_name, required: true, placeholder: 'Musician name', class: 'span12'  %>
+        <%= form.text_field :name, required: true, placeholder: 'Campaign name', class: 'span12' %>
         <%= form.collection_select(
           :category_id,
           Category.all,
@@ -45,14 +45,16 @@
          @campaign.musician.user.soundcloud_account.get_tracks_for_musician,
          :id,
          :title,
-          {required: true,
-           placeholder: 'Select category'},
+          {
+           placeholder: 'Select category',
+           include_blank:'Please select a track'},
           {class: 'select-block-level chzn-select',
            id: 'country'}
         ) %>
+<p>or</p>
         <%= link_to 'http://soundcloud.com/upload' do %>
           <p class='btn btn-info btn-large span12'>
-            Upload a new one
+            upload a new one
           </p>
         <% end %>
       </div>
@@ -64,7 +66,7 @@
     </div>
     <div class="row-fluid">
       <div class="span6 offset3 widget text-align-center">
-        <%= form.text_field :requested_likes, class: 'span12' %>
+        <%= form.text_field :requested_likes, class: 'span12', placeholder: "max 50" %>
       </div>
     </div>
     <div class="row-fluid">

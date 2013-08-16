@@ -1,13 +1,7 @@
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" id="homelogo" data-toggle="dropdown">
-    <i class="icon-rocket"></i> Launchbase <span class="badge badge-info">0</span>
-    <b class="caret"></b>
-  </a>
-<ul class="dropdown-menu">
-  <li><a href="#">No new tracks ready for download</a></li>
-
-  <li class="text-align-center"><%= link_to "View <i class='icon-rocket'></i> Launchbase".html_safe, launchbase_path %></li>
-</ul>
+<li class="active">
+  <%= link_to launchbase_path do %>
+    <i class="icon-rocket"></i> Launchbase
+  <% end %>
 </li>
 <li class="dropdown introhome" >
 <a href="#" class="dropdown-toggle" id="homelogo" data-toggle="dropdown">

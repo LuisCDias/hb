@@ -297,7 +297,9 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "runda", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 13px;
   line-height: 20px;
   color: #f8f8f8;
@@ -758,7 +760,8 @@ a.text-success:focus {
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: 700;
+  font-style: normal;
   line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
@@ -1061,7 +1064,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Open Sans", sans-serif;
+  font-family: "runda", sans-serif;
 }
 
 label {
@@ -3726,9 +3729,10 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   margin-bottom: 0;
   padding: 4px 14px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "runda", sans-serif;
   font-size: 13px;
-  font-weight: normal;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;

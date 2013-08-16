@@ -13,10 +13,6 @@ class Launchbase
   end
 
   def link_for_campaign(reserved_campaign)
-    if reserved_campaign.successful?
       reserved_campaign.track_permalink
-    else
-      'Not available yet'
-    end
   end
 end

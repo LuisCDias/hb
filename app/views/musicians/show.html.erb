@@ -48,17 +48,6 @@
                   </li>
                   <li>
                     <div class="icon pull-left">
-                      <i class="icon-star"></i>
-                    </div>
-                    <span class="key">Successful Campaigns</span>
-                    <div class="value pull-right">
-                      <span class="badge badge-info">
-                        <%= @musician.successful_campaigns %>
-                      </span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="icon pull-left">
                       <i class="icon-heart"></i>
                     </div>
                     <span class="key">Soundcloud Followers</span>
@@ -96,45 +85,11 @@
         <h4 class="widget">Campaigns by <%= @musician.soundcloud_account.soundcloud_username %></h4>
        </div>
      </div>
-     <div class="row-fluid">
-        <div class="span12">
-         <% @musician.campaigns.each do |campaign| %>
-            <div class="span3">
-              <section class="widget campaign">
-                <header>
-                  <h4><%= campaign.name %></h4>
-                  <p>by <%= link_to campaign.musician_name, musician_path(campaign.musician) %></p>
-                </header>
-                <div class="body">
-                  <div class="text-align-center">
-                    <%= link_to campaign.track_permalink, class: 'stratus' do %>
-                      <%= image_tag campaign.artwork_for_track %>
-                    <% end %>
-                  </div>
-                  <br />
-                  <ul class="server-stats">
-                    <li>
-                      <div class="key pull-right">
-                        <%= campaign.progress %>
-                      </div>
-                      <div class="stat">
-                        <div class="info">
-                          <%= campaign.reservations_left %>
-                        </div>
-                        <div class="progress progress-striped">
-                          <div class="bar" style="width: <%= campaign.progress %>%;"></div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="text-align-center">
-                    <%= campaign_controls_for campaign, current_user %>
-                  </div>
-                </div>
-               </section>
-             </div>
-           <% end %>
-        </div>
-     </div>
-  </div>
-</div>
+
+     <% @musician.campaigns.in_groups_of(4, false).each do |group| %>
+      <div class="row-fluid">
+        <% group.each do |campaign| %>
+          <%= render campaign %>
+        <% end %>
+      </div>
+     <% end %>

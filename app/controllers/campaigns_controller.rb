@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   def index
-    @campaigns = Campaign.search(params[:search]).paginate(:per_page => 8, :page => params[:page])
+    @campaigns = Campaign.search(params[:search]).order("created_at DESC").paginate(:per_page => 8, :page => params[:page])
   end
 
   def new
@@ -8,8 +8,8 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    campaign = musician.campaigns.build(campaign_params)
-    if campaign.save
+    @campaign = musician.campaigns.build(campaign_params)
+    if @campaign.save
       redirect_to music_path, notice: 'Campaign created!'
     else
       render 'new'

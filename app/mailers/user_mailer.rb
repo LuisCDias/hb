@@ -2,19 +2,27 @@ class UserMailer < ActionMailer::Base
   default from: "tiago@headblendr.com"
 
   def signup_confirmation(user)
+    @user = user
     @greeting = "Hi"
-    mail to: user.email, subject: "Headblendr Loves You"
+
+    mail(to: @user.email, subject: "Headblendr Loves You")
   end
 
-  def campaign_created(user)
-    mail to: user.email, subject: user.name + "up, up, up!"
+  def campaign_created(user, campaign)
+    @user = user
+    @campaign = campaign
+    mail(to: @user.email, subject: @user.name + " up, up, up!")
   end
 
-  def campaign_successful_fan(user)
-    mail to: user.email, subject: "campaign name is now available for download"
+  def campaign_successful_fan(user, campaign)
+    @user = user
+    @campaign = campaign
+    mail(to: @user.email, subject: @campaign.name + " is now available for download")
   end
 
-  def campaign_succesful_musician(user)
-    mail to: user.email, subject: "campaign name is launched"
+  def campaign_successful_musician(user, campaign)
+    @user = user
+    @campaign = campaign
+    mail(to: @user.email, subject: @campaign.name + " is launched")
   end
 end

@@ -26,7 +26,7 @@
               <% @launchbase.reserved_campaigns.each do |reserved_campaign| %>
                 <tr>
                   <td><%= reserved_campaign.id %></td>
-                  <td><%= link_to reserved_campaign.name, '#' %></td>
+                  <td><%= link_to reserved_campaign.name, campaign_path(reserved_campaign) %></td>
                   <td>
                     <%= link_to reserved_campaign.track_permalink, class: 'stratus' do %>
                     <%= image_tag reserved_campaign.artwork_for_track,
@@ -46,7 +46,12 @@
                     <%= reserved_campaign.reservations_left %>
                   </td>
                   <td>
-                    <%= @launchbase.link_for_campaign reserved_campaign %>
+                    <% if reserved_campaign.successful? %>
+                      <%= link_to 'Download Track',
+                        @launchbase.link_for_campaign(reserved_campaign), :target => "_blank" %>
+                    <% else %>
+                      <p>Not available yet</p>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>

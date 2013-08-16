@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
 
   after_create :sendmail
 
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_many :campaigns, through: :reservations
-  has_one :musician
+  has_one :musician, dependent: :destroy
   has_one :soundcloud_account, through: :musician
 
   validates :name, presence: true

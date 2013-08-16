@@ -3,7 +3,6 @@ class Campaign < ActiveRecord::Base
   belongs_to :musician
   has_many :backers, through: :reservations, source: :user
   has_many :reservations
-
   after_create :newcampaignmail
 
   def save
@@ -11,17 +10,13 @@ class Campaign < ActiveRecord::Base
     update_campaign_track_metadata
   end
 
+
   def is_available_for?(user)
     true unless backers.include? user
   end
 
   def reservations_left
     requested_likes.to_i - reserved
-  end
-
-  def track_info
-    client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
-    client.get("/tracks/#{track_id}")
   end
 
   def artwork_for_track
@@ -32,12 +27,8 @@ class Campaign < ActiveRecord::Base
     track_info.permalink_url
   end
 
-  def playcount
-    track_info.playback_count
-  end
-
-  def downloadcount
-    track_info.download_count
+  def progress
+    (100 * reserved / requested_likes.to_i).round
   end
 
   def successful?
@@ -48,16 +39,30 @@ class Campaign < ActiveRecord::Base
     end
   end
 
-  def progress
-    if reserved == 0
-      0
-    else
-      (100 * reserved / requested_likes).round
-    end
+  def set_track_as_downloadable
+    track_client = Soundcloud.new(access_token: musician.soundcloud_account.access_token)
+    track = track_client.get("/tracks/#{self.track_id}")
+    track_client.put(track.uri, track: {
+      downloadable: true,
+      description: "Track launched at http://www.headblendr.com"
+    })
   end
-
+  
   def reserved
     reservations.length
+  end
+
+  def track_info
+    client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
+    client.get("/tracks/#{track_id}")
+  end
+
+  def playcount
+    self.track_info.playback_count
+  end
+
+  def downloadcount
+    self.track_info.download_count
   end
 
   def update_campaign_track_metadata
@@ -72,12 +77,12 @@ class Campaign < ActiveRecord::Base
   end
 
   def newcampaignmail
-    UserMailer.campaign_created(self.musician.user).deliver
+    UserMailer.campaign_created(self.musician.user, self).deliver
   end
 
   def self.search(search)
     if search
-      where('name LIKE :search', :search => "%#{search}%")
+      where('category_id LIKE :search', :search => "%#{search}%") 
     else
       scoped
     end
