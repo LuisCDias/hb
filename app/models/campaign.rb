@@ -34,7 +34,11 @@ class Campaign < ActiveRecord::Base
   end
 
   def track_permalink
-    track_info.permalink_url
+    begin
+      track_info.permalink_url
+    rescue Exception
+      permalink_url = 'http://soundcloud.com/headblendr/headblendr-official-song'
+    end
   end
 
   def progress
