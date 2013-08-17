@@ -5,6 +5,11 @@ class Campaign < ActiveRecord::Base
   has_many :reservations
   after_create :newcampaignmail
 
+  validates_numericality_of :requested_likes, only_integer: true,
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 50,
+    message: 'Maximum requested likes are limited to 50'
+
   def save
     super
     update_campaign_track_metadata
@@ -20,7 +25,12 @@ class Campaign < ActiveRecord::Base
   end
 
   def artwork_for_track
-    track_info.artwork_url.sub("large", "t200x200")
+    begin
+     track_info.artwork_url.sub("large", "t200x200")
+    rescue Exception
+      artwork_url = 'https://i1.sndcdn.com/artworks-000055452316-se7lpm-large.jpg?aa1a7cb'
+      artwork_url.sub("large", "t200x200")
+    end
   end
 
   def track_permalink

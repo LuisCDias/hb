@@ -3,6 +3,8 @@ class Musician < ActiveRecord::Base
   has_many :campaigns, dependent: :destroy
   has_one :soundcloud_account, dependent: :destroy
 
+  validates_associated :campaign
+
   def description
     musician_info.description
   end

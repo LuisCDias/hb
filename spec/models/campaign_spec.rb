@@ -8,5 +8,17 @@ describe Campaign, 'associations' do
 end
 
 describe Campaign, 'validations' do
-  it { should validate_numericality_of(:requested_likes) }
+  it { should_not allow_value(52).for(:requested_likes) }
+end
+
+describe Campaign, 'built with musician' do
+  it 'should not allow more than 50 requested likes' do
+    user = create :user
+    musician = create :musician, user: user
+    campaign = musician.campaigns.build
+    campaign.requested_likes = 52
+
+    expect(campaign.save).to raise_error
+
+  end
 end
