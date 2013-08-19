@@ -1,4 +1,4 @@
-You look great in Suspenders
+Headblendr Beta V1.0
 ============================
 
 Use the following guides for getting things done, programming well, and
