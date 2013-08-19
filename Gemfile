@@ -28,6 +28,8 @@ gem 'soundcloud'
 gem 'uglifier'
 gem 'unicorn'
 gem 'will_paginate', '~>3.0'
+gem 'google-analytics-rails'
+
 
 group :development do
   gem 'foreman'

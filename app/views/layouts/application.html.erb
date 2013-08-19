@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="//use.typekit.net/zsb3ahp.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <%= analytics_init if Rails.env.production? %>
 </head>
 <body class="<%= body_class %>">
   <%= render 'header' -%>
