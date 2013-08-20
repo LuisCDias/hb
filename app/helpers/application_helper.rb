@@ -12,7 +12,7 @@ module ApplicationHelper
   def campaign_controls_for(campaign, user)
     if campaign.successful?
       campaign_already_launched_button
-    elsif campaign.is_available_for?(user) && campaign.musician.user != user
+    elsif campaign_available_for_reservation? campaign, user
       reserve_campaign_button campaign
     else
       campaign_reserved_button
@@ -33,5 +33,16 @@ module ApplicationHelper
   def campaign_already_launched_button
     button_tag 'Already Launched', inactive: true,
       class: 'btn btn-info'
+  end
+
+  private
+
+  def campaign_available_for_reservation?(campaign, user)
+    true if campaign.is_available_for?(user) &&
+      campaign_is_not_owned_by?(campaign, user)
+  end
+
+  def campaign_is_not_owned_by?(campaign, user)
+    true if campaign.musician.user != user
   end
 end
