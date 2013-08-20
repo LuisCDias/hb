@@ -6,7 +6,8 @@
           <h2 class="page-title pull-left">Dashboard</h2>
           <%= link_to user_settings_path do %>
             <button type="button" class="btn btn-info pull-right"
-              data-placement="top" data-original-title=".btn .btn-info .btn-large .pull-right">
+              data-placement="top"
+              data-original-title=".btn .btn-info .btn-large .pull-right">
               &nbsp;<i class="icon-cog"></i> Account Settings&nbsp;
             </button>
           <% end %>
@@ -83,7 +84,10 @@
         </div>
         <div class="span3 widget hidden-phone">
           <%= link_to new_campaign_path do %>
-            <button type="submit" class="btn btn-info btn-large btncampaign">New Campaign</button>
+            <button type="submit"
+              class="btn btn-info btn-large btncampaign">
+              New Campaign
+            </button>
           <% end %>
         </div>
       </div>
@@ -109,7 +113,7 @@
                 <td>
                   <%= link_to campaign.track_permalink, class: 'stratus' do %>
                     <%= image_tag campaign.artwork_for_track,
-                      {style: "height: 25px;" } %>
+                      { style: "height: 25px;" } %>
                     <% end %>
                 </td>
                 <td><%= campaign.requested_likes %></td>
@@ -125,7 +129,8 @@
           <div class="widget">
             <h4>Musician Profile</h4>
             <h5>
-              <%= image_tag @lounge.soundcloud_avatar, {style: "height: 25px;"} %>
+              <%= image_tag @lounge.soundcloud_avatar,
+                { style: "height: 25px;" } %>
             </h5>
             <p class="hidden-iphone">
               <%= @lounge.musician_description %>

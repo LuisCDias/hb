@@ -4,40 +4,62 @@
       <div class="row-fluid">
         <div class="span12">
           <section class="widget">
-          <header>
-          <h4><i class="icon-rocket"></i>Launchbase</h4>
-          </header>
-          <div class="body">
-            <h5>Here you will find all your launches. <small>Click artwork to play preview</small></h5>
-            <table id="datatable-table" class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Campaign</th>
-                  <th class="no-sort">Artwork</th>
-                  <th>Musician</th>
-                  <th class="hidden-phone-landscape">Reserved On</th>
-                  <th>Progress</th>
-                  <th>Requests Left</th>
-                  <th class="no-sort">Download Link</th>
-                </tr>
-              </thead>
+            <header>
+              <h4>
+                <i class="icon-rocket"></i> Launchbase
+              </h4>
+            </header>
+            <div class="body">
+              <h5>
+                Here you will find all your launches. 
+                <small>Click artwork to play preview</small>
+              </h5>
+              <table id="datatable-table" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Campaign</th>
+                    <th class="no-sort">Artwork</th>
+                    <th>Musician</th>
+                    <th class="hidden-phone-landscape">Reserved On</th>
+                    <th>Progress</th>
+                    <th>Requests Left</th>
+                    <th class="no-sort">Download Link</th>
+                  </tr>
+                </thead>
               <tbody>
               <% @launchbase.reserved_campaigns.each do |reserved_campaign| %>
                 <tr>
-                  <td><%= reserved_campaign.id %></td>
-                  <td><%= link_to reserved_campaign.name, campaign_path(reserved_campaign) %></td>
                   <td>
-                    <%= link_to reserved_campaign.track_permalink, class: 'stratus' do %>
-                    <%= image_tag reserved_campaign.artwork_for_track,
-                      { style: "height: 25px;" } %>
+                    <%= reserved_campaign.id %>
+                  </td>
+                  <td>
+                    <%= link_to(
+                      reserved_campaign.name,
+                      campaign_path(reserved_campaign)
+                    ) %>
+                  </td>
+                  <td>
+                    <%= link_to(
+                      reserved_campaign.track_permalink,
+                      class: 'stratus'
+                      ) do %>
+                      <%= image_tag(
+                        reserved_campaign.artwork_for_track,
+                        { style: "height: 25px;" }
+                       ) %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to reserved_campaign.musician_name, musician_path(reserved_campaign.musician) %>
+                    <%= link_to(
+                      reserved_campaign.musician_name,
+                      musician_path(reserved_campaign.musician) 
+                    ) %>
                   </td>
                   <td>
-                    <%= time_ago_in_words(@launchbase.reservation_date reserved_campaign) %> ago
+                    <%= time_ago_in_words(
+                      @launchbase.reservation_date reserved_campaign
+                    ) %> ago
                   </td>
                   <td>
                     <%= reserved_campaign.progress %>%
@@ -47,19 +69,22 @@
                   </td>
                   <td>
                     <% if reserved_campaign.successful? %>
-                      <%= link_to 'Download Track',
-                        @launchbase.link_for_campaign(reserved_campaign), :target => "_blank" %>
+                      <%= link_to(
+                        'Download Track',
+                        @launchbase.link_for_campaign(reserved_campaign),
+                        :target => "_blank" 
+                      ) %>
                     <% else %>
                       <p>Not available yet</p>
                     <% end %>
                   </td>
                 </tr>
               <% end %>
-              </tbody>
-            </table>
-           </div>
-         </section>
-        </div>
-      </div>
-    </div>
-  </div>
+             </tbody>
+           </table>
+          </div>
+        </section>
+       </div>
+     </div>
+   </div>
+ </div>
