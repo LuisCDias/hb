@@ -15,7 +15,6 @@ class Campaign < ActiveRecord::Base
     update_campaign_track_metadata
   end
 
-
   def is_available_for?(user)
     true unless backers.include? user
   end
@@ -72,7 +71,7 @@ class Campaign < ActiveRecord::Base
 
   def track_info
     begin
-     client = Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])
+     client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
      client.get("/tracks/#{track_id}")
     rescue Exception
       client.get("/tracks/105638518")
