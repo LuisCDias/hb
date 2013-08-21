@@ -38,10 +38,11 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '>= 2.14'
+  gem 'sinatra', require: false
 end
 
 group :test do
-  gem 'capybara-webkit', '>= 0.14.1', require: false
+  gem 'capybara-webkit', '>= 0.14.1'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'

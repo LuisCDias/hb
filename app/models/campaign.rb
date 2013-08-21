@@ -3,17 +3,17 @@ class Campaign < ActiveRecord::Base
   belongs_to :musician
   has_many :backers, through: :reservations, source: :user
   has_many :reservations
-  after_create :newcampaignmail
+  after_create :newcampaignmail, :update_campaign_track_metadata
 
-  validates_numericality_of :requested_likes, only_integer: true,
+  validates :musician_name, presence: true
+  validates :name, presence: true
+  validates_numericality_of :requested_likes, only_integer: true
+  validates_numericality_of :requested_likes,
     greater_than_or_equal_to: 1,
-    less_than_or_equal_to: 50,
-    message: 'Maximum requested likes are limited to 50'
+    less_than_or_equal_to: 25,
+    message: 'are limited to 25'
+  validates :requested_likes, presence: true
 
-  def save
-    super
-    update_campaign_track_metadata
-  end
 
   def is_available_for?(user)
     true unless backers.include? user
@@ -71,7 +71,7 @@ class Campaign < ActiveRecord::Base
 
   def track_info
     begin
-     client = Soundcloud.new(client_id: ENV['SC_STAGING_ID'])
+     client = Soundcloud.new(client_id: ENV['SC_LOCAL_ID'])
      client.get("/tracks/#{track_id}")
     rescue Exception
       client.get("/tracks/105638518")
@@ -105,7 +105,7 @@ class Campaign < ActiveRecord::Base
     if search
       where(category_id: search)
     else
-      scoped
+      all
     end
   end
 end

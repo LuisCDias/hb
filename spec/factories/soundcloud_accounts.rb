@@ -1,6 +1,5 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :soundcloud_account do
+    access_token 'access_token'
   end
 end

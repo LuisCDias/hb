@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 feature 'User connects Soundcloud account' do
-  scenario 'to become a musician' do
-    user = create :user
-    sign_in_as user
+  scenario 'to become a musician', js: true do
+    sign_in_with :facebook
 
     visit user_settings_path
 

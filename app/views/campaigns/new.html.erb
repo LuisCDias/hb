@@ -5,13 +5,15 @@
       <%= form_for @campaign do |form| %>
        <% if @campaign.errors.any? %>
          <div id="error_explanation">
+           <div class="span6 offset3 text-align-center">
            <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
            <ul>
            <% @campaign.errors.full_messages.each do |msg| -%>
-             <li><%= msg %></li>
+             <li><p><%= msg %></p></li>
            <% end -%>
-           </ul>
-          </div>
+         </ul>
+        </div>
+        </div>
        <% end %>
       <div class="span6 offset3">
         <h3>1. Musician, Campaign Name &amp; Category</h3>
