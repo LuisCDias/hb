@@ -120,6 +120,13 @@
                 <td><%= campaign.requested_likes %></td>
                 <td><%= campaign.reserved %></td>
                 <td><%= campaign.progress %>%</td>
+                <td>
+                  <%= button_to 'Delete',
+                    campaign_path(campaign),
+                    method: :delete,
+                    confirm: "This campaign will be deleted, are you sure?"
+                  %>
+                </td>
               </tr>
             <% end -%>
             </tbody>

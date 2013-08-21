@@ -8,7 +8,7 @@ Hb::Application.routes.draw do
     get "users/sign_out", to: 'devise/sessions#destroy', as: :sign_out
   end
 
-  resources :campaigns, only: [:index, :show, :new, :create] do
+  resources :campaigns, only: [:index, :show, :new, :create, :destroy] do
     resources :reservations, only: [:create]
   end
   get 'music', to: 'campaigns#index', as: :music

@@ -24,6 +24,12 @@ class CampaignsController < AuthorizedController
     @campaign = Campaign.find(params[:id])
   end
 
+  def destroy
+    @campaign = Campaign.find(params[:id])
+    @campaign.destroy
+    redirect_to artist_lounge_url, notice: 'Campaign deleted'
+  end
+
   private
 
   def musician
