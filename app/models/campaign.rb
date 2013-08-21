@@ -2,7 +2,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :category
   belongs_to :musician
   has_many :backers, through: :reservations, source: :user
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   after_create :newcampaignmail, :update_campaign_track_metadata
 
   validates :musician_name, presence: true
