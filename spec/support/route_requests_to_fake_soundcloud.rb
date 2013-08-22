@@ -8,5 +8,9 @@ RSpec.configure do |config|
       :get,
       "https://api.soundcloud.com/tracks/?format=json&oauth_token=access_token").
       to_return()
+      stub_request(
+        :get,
+        "https://api.soundcloud.com/me?format=json&oauth_token=1-412-14-21").
+        to_rack(FakeSoundcloud)
   end
 end

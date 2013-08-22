@@ -27,6 +27,10 @@ class Musician < ActiveRecord::Base
     musician_info.permalink_url
   end
 
+  def tracks
+    musician_client.get("/me/tracks")
+  end
+
   private
 
   def musician_info
