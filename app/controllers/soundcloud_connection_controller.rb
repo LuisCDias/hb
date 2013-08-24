@@ -5,8 +5,7 @@ class SoundcloudConnectionController < AuthorizedController
 
   def connected
     if params[:error].nil?
-      MusicianRegistration.new(access_token, current_user).register
-
+      register_musician
       redirect_to user_settings_url,
          notice: 'Soundcloud account connected'
     else
@@ -27,10 +26,6 @@ class SoundcloudConnectionController < AuthorizedController
 
   private
 
-  def get_credentials
-    soundcloud_client.exchange_token code: code
-  end
-
   def code
     params[:code]
   end
@@ -39,12 +34,20 @@ class SoundcloudConnectionController < AuthorizedController
     get_credentials
   end
 
+  def get_credentials
+    soundcloud_client.exchange_token code: code
+  end
+
   def access_token
     credentials.access_token
   end
 
   def musician
     Musician.find params[:id]
+  end
+
+  def register_musician
+    MusicianRegistration.new(access_token, current_user).register
   end
 
   def soundcloud_client
