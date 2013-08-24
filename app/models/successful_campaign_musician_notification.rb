@@ -15,14 +15,10 @@ class SuccessfulCampaignMusicianNotification
     campaign.musician.user.email
   end
 
-  def campaign_name
-    campaign.name
-  end
-
   def send_notification_to(musician_email)
     UserMailer.campaign_successful_musician(
       musician_email,
-      campaign_name
+      campaign
     ).deliver
   end
 end
