@@ -8,10 +8,16 @@ class Reservation < ActiveRecord::Base
   end
 
   def campaign_successful
-    if self.campaign.successful?
+    if campaign.successful?
       campaign.set_track_as_downloadable
-      UserMailer.campaign_successful_fan(self.user, self.campaign).deliver
+      notify_backers
       UserMailer.campaign_successful_musician(self.campaign.musician.user, self.campaign).deliver
     end
+  end
+
+  private
+
+  def notify_backers
+    SuccessfulCampaignBackersNotification.new(self.campaign).deliver
   end
 end
