@@ -19,9 +19,8 @@ class UserMailer < ActionMailer::Base
     mail(to: backer, subject: @campaign.name + " is now available for download")
   end
 
-  def campaign_successful_musician(user, campaign)
-    @user = user
+  def campaign_successful_musician(musician_email, campaign)
     @campaign = campaign
-    mail(to: @user.email, subject: @campaign.name + " is launched")
+    mail(to: musician_email, subject: @campaign.name + " is launched")
   end
 end

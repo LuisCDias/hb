@@ -4,7 +4,7 @@ class SuccessfulCampaignBackersNotification
   end
 
   def deliver
-    backers.each { |backer| notify backer }
+    backers.each { |backer| send_notification_to backer }
   end
 
   private
@@ -15,7 +15,7 @@ class SuccessfulCampaignBackersNotification
     campaign.backers.map(&:email)
   end
 
-  def notify(backer)
+  def send_notification_to(backer)
     UserMailer.campaign_successful_fan(backer, campaign).deliver
   end
 end
