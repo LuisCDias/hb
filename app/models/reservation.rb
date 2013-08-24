@@ -4,10 +4,7 @@ class Reservation < ActiveRecord::Base
   after_create :campaign_successful
 
   def self.reserve_campaign_for(user, campaign)
-    create(
-      user: user,
-      campaign: campaign
-    )
+    create(user: user, campaign: campaign)
   end
 
   def campaign_successful
