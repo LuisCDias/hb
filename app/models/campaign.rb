@@ -22,10 +22,6 @@ class Campaign < ActiveRecord::Base
     requested_likes.to_i - reserved
   end
 
-  def reservations_count
-    reservations.count
-  end
-
   def artwork_for_track
     begin
      track_info.artwork_url.sub("large", "t200x200")
