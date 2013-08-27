@@ -12,11 +12,11 @@ class Musician < ActiveRecord::Base
   end
 
   def total_campaign_playcount
-    #total_playcounts
+    total_playcounts
   end
 
   def total_launch_requests_achieved
-    #total_launch_requests
+    total_launch_requests
   end
 
   def soundcloud_page
@@ -24,17 +24,13 @@ class Musician < ActiveRecord::Base
   end
 
   def tracks
-    musician_info.get_tracks_for_musician
+    tracks_for_musician
   end
 
   private
 
   def playcount_for_musician_campaigns
-    if has_campaigns?
-      campaigns.map(&:playcount)
-    else
-      0
-    end
+    campaigns.map(&:playcount)
   end
 
   def total_playcounts
@@ -42,15 +38,7 @@ class Musician < ActiveRecord::Base
   end
 
   def launch_requests_for_musician_campaigns
-    if has_campaigns?
-      campaigns.map(&:reservations_count)
-    else
-      0
-    end
-  end
-
-  def has_campaigns?
-    true if campaigns != nil
+    campaigns.map(&:reservation_count)
   end
 
   def total_launch_requests
@@ -61,5 +49,11 @@ class Musician < ActiveRecord::Base
     SoundcloudGateway::SoundcloudMusicianInfo.new(
       soundcloud_account.access_token
     ).get_soundcloud_info
+  end
+
+  def tracks_for_musician
+    SoundcloudGateway::SoundcloudMusicianInfo.new(
+      soundcloud_account.access_token
+    ).get_tracks_for_musician
   end
 end
