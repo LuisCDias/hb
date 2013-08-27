@@ -30,7 +30,11 @@ class Musician < ActiveRecord::Base
   private
 
   def playcount_for_musician_campaigns
-    campaigns.map(&:playcount)
+    if has_campaigns?
+      campaigns.map(&:playcount)
+    else
+      0
+    end
   end
 
   def total_playcounts
