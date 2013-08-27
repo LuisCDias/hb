@@ -12,11 +12,11 @@ class Musician < ActiveRecord::Base
   end
 
   def total_campaign_playcount
-    total_playcounts
+    #total_playcounts
   end
 
   def total_launch_requests_achieved
-    total_launch_requests
+    #total_launch_requests
   end
 
   def soundcloud_page
