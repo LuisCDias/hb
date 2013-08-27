@@ -30,7 +30,7 @@ class Musician < ActiveRecord::Base
   private
 
   def playcount_for_musician_campaigns
-    campaigns.map(&:playcount) || 0
+    campaigns.map(&:playcount)
   end
 
   def total_playcounts
@@ -38,7 +38,15 @@ class Musician < ActiveRecord::Base
   end
 
   def launch_requests_for_musician_campaigns
-    campaigns.map(&:reservations_count)
+    if has_campaigns?
+      campaigns.map(&:reservations_count)
+    else
+      0
+    end
+  end
+
+  def has_campaigns?
+    campaigns?
   end
 
   def total_launch_requests
