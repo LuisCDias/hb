@@ -46,7 +46,7 @@ class Musician < ActiveRecord::Base
   end
 
   def has_campaigns?
-    campaigns?
+    true if campaigns != nil
   end
 
   def total_launch_requests
