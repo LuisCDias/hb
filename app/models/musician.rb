@@ -24,7 +24,7 @@ class Musician < ActiveRecord::Base
   end
 
   def tracks
-    musician_client.get("/me/tracks")
+    musician_info.get_tracks_for_musician
   end
 
   private
@@ -38,7 +38,7 @@ class Musician < ActiveRecord::Base
   end
 
   def launch_requests_for_musician_campaigns
-    campaigns.map(&:reservations.length)
+    campaigns.map(&:reservations_count)
   end
 
   def total_launch_requests
