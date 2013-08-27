@@ -38,7 +38,7 @@ class Musician < ActiveRecord::Base
   end
 
   def launch_requests_for_musician_campaigns
-    campaigns.map(&:reserved)
+    campaigns.map(&:reservation_count)
   end
 
   def total_launch_requests
