@@ -14,8 +14,8 @@ module SoundcloudGateway
 
     def soundcloud_client
       Soundcloud.new(
-        client_id: ENV['SC_CLIENT_ID'],
-        client_secret: ENV['SC_CLIENT_SECRET'],
+        client_id: ENV['SC_STAGING_ID'],
+        client_secret: ENV['SC_STAGING_SECRET'],
         redirect_uri: redirect_uri
       )
     end
