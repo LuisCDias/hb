@@ -68,6 +68,10 @@ class Campaign < ActiveRecord::Base
     reservations.length
   end
 
+  def reservation_count
+    reservations.count
+  end
+
   def track_info
     begin
      client = Soundcloud.new(client_id: ENV['SC_CLIENT_ID'])

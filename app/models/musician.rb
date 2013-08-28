@@ -12,15 +12,11 @@ class Musician < ActiveRecord::Base
   end
 
   def total_campaign_playcount
-    campaigns.inject(0) do |sum, campaign|
-      sum + campaign.playcount
-    end
+    total_playcounts
   end
 
   def total_launch_requests_achieved
-    campaigns.inject(0) do |sum, campaign|
-      sum + campaign.reservations.length
-    end
+    total_launch_requests
   end
 
   def soundcloud_page
@@ -28,20 +24,36 @@ class Musician < ActiveRecord::Base
   end
 
   def tracks
-    musician_client.get("/me/tracks")
+    tracks_for_musician
   end
 
   private
 
-  def musician_info
-    begin
-      musician_client.get("/me")
-    rescue Exception
-      musician_client.get("/users/54577589")
-    end
+  def playcount_for_musician_campaigns
+    campaigns.map(&:playcount)
   end
 
-  def musician_client
-    Soundcloud.new(access_token: soundcloud_account.access_token)
+  def total_playcounts
+    playcount_for_musician_campaigns.inject(&:+)
+  end
+
+  def launch_requests_for_musician_campaigns
+    campaigns.map(&:reservation_count)
+  end
+
+  def total_launch_requests
+    launch_requests_for_musician_campaigns.inject(&:+)
+  end
+
+  def musician_info
+    SoundcloudGateway::SoundcloudMusicianInfo.new(
+      soundcloud_account.access_token
+    ).get_soundcloud_info
+  end
+
+  def tracks_for_musician
+    SoundcloudGateway::SoundcloudMusicianInfo.new(
+      soundcloud_account.access_token
+    ).get_tracks_for_musician
   end
 end
