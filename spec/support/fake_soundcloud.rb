@@ -9,6 +9,10 @@ class FakeSoundcloud < Sinatra::Base
     json_response 200, 'soundcloud_info.json'
   end
 
+  get '/tracks/' do
+    json_response 200, 'soundcloud_info.json'
+  end
+
   private
 
   def json_response(response_code, file_name)
