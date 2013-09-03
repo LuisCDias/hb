@@ -23,4 +23,7 @@ class UserMailer < ActionMailer::Base
     @campaign = campaign
     mail(to: musician_email, subject: @campaign.name + " is launched")
   end
+
+  def campaign_deleted(musician_email, campaign)
+  end
 end

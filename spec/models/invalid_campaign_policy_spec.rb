@@ -1,18 +1,20 @@
 require 'spec_helper'
 
 describe InvalidCampaignPolicy do
-  before do
-    user = create :user
-    access_token = "1-412-14-21"
-    registration = MusicianRegistration.new access_token, user
-    registration.register
-    @campaign = create :campaign, musician: user.musician
-  end
-
   it 'deletes invalid campaigns' do
-    expect(InvalidCampaignPolicy.new(@campaign)).to receive(:sweep)
-    @campaign.track_info = nil
+    campaign = double('campaign').as_null_object
+    expect(campaign).to receive(:destroy)
+
+    InvalidCampaignPolicy.new(campaign).sweep
   end
 
-  it 'notifies the musician that the campaign is invalid'
+  it 'notifies the musician that the campaign is invalid' do
+    musician = double('musician', email: 'artist@example.com')
+    campaign = double('campaign', musician: musician).as_null_object
+    expect(UserMailer).to receive(:campaign_deleted).with(
+      musician.email, campaign).
+      and_return( double('Mailer', deliver: true))
+
+    InvalidCampaignPolicy.new(campaign).sweep
+  end
 end
