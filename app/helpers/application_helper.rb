@@ -20,9 +20,9 @@ module ApplicationHelper
   end
 
   def reserve_campaign_button(campaign)
-    button_to 'Make it launch faster',
-      campaign_reservations_path(campaign),
-      class: 'btn btn-info'
+    link_to "<i class='icon-rocket'></i> Launch this sound <i class='icon-rocket'></i>".html_safe,
+      campaign_reservations_path(campaign), method: :post,
+      class: 'btn-btn-info'
   end
 
   def campaign_reserved_button

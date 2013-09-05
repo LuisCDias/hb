@@ -20,6 +20,6 @@ class CampaignCreatedNotification
   end
 
   def send_notification_to(musician)
-    UserMailer.campaign_created(musician, campaign_name).deliver
+    UserMailer.campaign_created(musician, campaign_name).delay.deliver
   end
 end

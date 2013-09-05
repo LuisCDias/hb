@@ -19,6 +19,6 @@ class SuccessfulCampaignMusicianNotification
     UserMailer.campaign_successful_musician(
       musician_email,
       campaign
-    ).deliver
+    ).delay.deliver
   end
 end
