@@ -62,14 +62,6 @@ class Campaign < ActiveRecord::Base
     reservations.length
   end
 
-  def playcount
-   self.track_info.playback_count
-  end
-
-  def downloadcount
-    self.track_info.download_count
-  end
-
   def self.search(search)
     if search
       where(category_id: search)
