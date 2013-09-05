@@ -24,6 +24,6 @@ class ArtistLounge
   end
 
   def download_counts
-    campaigns.sum { |c| c.downloadcount }
+    campaigns.sum { |c| c.download_count }
   end
 end
