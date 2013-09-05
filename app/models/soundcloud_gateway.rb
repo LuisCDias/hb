@@ -46,8 +46,7 @@ module SoundcloudGateway
   class SoundcloudTrackInfo
     attr_reader :track_id
 
-    def initialize(access_token, track_id)
-      @access_token = access_token
+    def initialize(track_id)
       @track_id = track_id
     end
 
@@ -57,10 +56,8 @@ module SoundcloudGateway
 
     private
 
-    attr_reader :access_token
-
     def soundcloud_client
-      Soundcloud.new access_token: access_token
+      Soundcloud.new client_id: ENV['SC_STAGING_ID']
     end
   end
 

@@ -1,9 +1,6 @@
 class TrackInfo
-  attr_reader :access_token, :track_id
-
-  def initialize(access_token, track_id)
-    @access_token = access_token
-    @track = track_id
+  def initialize(track_id)
+    @track_id = track_id
   end
 
   def track_artwork
@@ -24,12 +21,14 @@ class TrackInfo
 
   private
 
+  attr_reader :track_id
+
   def resized_artwork
     track_info.artwork_url.sub("large", "t200x200")
   end
 
   def track_info
-    SoundcloudGateway::SoundcloudTrackInfo.new(access_token, track_id).
+    SoundcloudGateway::SoundcloudTrackInfo.new(track_id).
       get_soundcloud_track_info
   end
 end
