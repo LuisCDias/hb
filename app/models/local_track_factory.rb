@@ -2,19 +2,23 @@ class LocalTrackFactory
   def initialize(campaign)
     @campaign = campaign
     @track_id = campaign.track_id
+    @access_token = campaign.musician_access_token
   end
 
-  def create_local_track
-    get_track_info
-    save_local_track
+  def create
+    create_local_track_for_campaign
   end
 
   private
 
-  attr_reader :campaign, :track_id
+  attr_reader :access_token, :campaign, :track_id
 
-  def save_local_track
-    LocalTrack.create_from_soundcloud_info campaign, track_info
+  def create_local_track_for_campaign
+    campaign.build_local_track(
+     soundcloud_id: track_id,
+     permalink_url: track_info.track_permalink,
+     artwork_url: track_info.track_artwork
+    ).save
   end
 
   def track_info
@@ -22,6 +26,6 @@ class LocalTrackFactory
   end
 
   def get_track_info
-    TrackInfo.new track_id
+    TrackInfo.new(access_token, track_id)
   end
 end

@@ -3,6 +3,8 @@ class Musician < ActiveRecord::Base
   has_many :campaigns, dependent: :destroy
   has_one :soundcloud_account, dependent: :destroy
 
+  delegate :access_token, to: :soundcloud_account
+
   def description
     musician_info.description
   end
@@ -38,7 +40,7 @@ class Musician < ActiveRecord::Base
   end
 
   def launch_requests_for_musician_campaigns
-    campaigns.map(&:reservation_count)
+    campaigns.map(&:reserved)
   end
 
   def total_launch_requests

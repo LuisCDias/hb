@@ -1,7 +1,8 @@
 class TrackInfo
-  attr_reader :track_id
+  attr_reader :access_token, :track_id
 
-  def initialize(track_id)
+  def initialize(access_token, track_id)
+    @access_token = access_token
     @track = track_id
   end
 
@@ -28,7 +29,7 @@ class TrackInfo
   end
 
   def track_info
-    SoundcloudGateway::SoundcloudTrackInfo.new(track_id).
+    SoundcloudGateway::SoundcloudTrackInfo.new(access_token, track_id).
       get_soundcloud_track_info
   end
 end

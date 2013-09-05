@@ -14,14 +14,8 @@ class SuccessfulCampaignPolicy
   attr_reader :campaign
 
   def set_campaign_track_as_downloadable
-    track_client = Soundcloud.new(
-      access_token: campaign.musician.soundcloud_account.access_token
-    )
-    track = track_client.get("/tracks/#{campaign.track_id}")
-    track_client.put(track.uri, track: {
-      downloadable: true,
-      description: "Track launched at http://www.headblendr.com"
-    })
+    SoundcloudGateway::TrackMetadataUpdater.new(campaign).
+      set_track_as_downloadable
   end
 
   def notify_backers

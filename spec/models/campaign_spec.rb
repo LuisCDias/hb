@@ -5,6 +5,7 @@ describe Campaign, 'associations' do
   it { should belong_to(:category) }
   it { should have_many(:backers).through(:reservations) }
   it { should have_many(:reservations) }
+  it { should have_one(:local_track) }
 end
 
 describe Campaign, 'validations' do
