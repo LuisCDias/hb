@@ -39,12 +39,12 @@ class Musician < ActiveRecord::Base
     playcount_for_musician_campaigns.inject(&:+)
   end
 
-  def launch_requests_for_musician_campaigns
-    campaigns.map(&:reserved)
-  end
-
   def total_launch_requests
     launch_requests_for_musician_campaigns.inject(&:+)
+  end
+
+  def launch_requests_for_musician_campaigns
+    campaigns.map(&:reserved)
   end
 
   def musician_info

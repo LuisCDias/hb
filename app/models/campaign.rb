@@ -34,6 +34,14 @@ class Campaign < ActiveRecord::Base
     local_track.permalink_url
   end
 
+  def download_count
+    TrackInfo.new(track_id).track_download_count
+  end
+
+  def playcount
+    TrackInfo.new(track_id).track_playback_count
+  end
+
   def progress
     if reserved == 0
       0
