@@ -3,7 +3,9 @@ class Campaign < ActiveRecord::Base
   belongs_to :musician
   has_many :backers, through: :reservations, source: :user
   has_many :reservations, dependent: :destroy
-  after_create :newcampaignmail, :update_campaign_track_metadata
+  has_one :local_track
+  after_create :newcampaignmail, :update_campaign_track_metadata,
+    :set_local_track
 
   validates :musician_name, presence: true
   validates :name, presence: true
@@ -106,5 +108,10 @@ class Campaign < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def set_local_track
+    local_track = campaign.build_local_track
+    local_track.update_from_soundcloud_info track_info
   end
 end
