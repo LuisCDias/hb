@@ -115,7 +115,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def set_local_track
-    local_track = campaign.build_local_track
+    local_track = self.build_local_track
     local_track.update_from_soundcloud_info track_info
   end
 end
