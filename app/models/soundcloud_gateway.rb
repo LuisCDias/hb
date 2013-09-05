@@ -82,7 +82,7 @@ module SoundcloudGateway
     end
 
     def set_track_as_downloadable
-      track_client.put(
+      soundcloud_client.put(
         track.uri, track: {
         downloadable: true,
         description: "Track launched at http://www.headblendr.com"
