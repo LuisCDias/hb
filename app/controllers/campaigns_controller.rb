@@ -14,6 +14,7 @@ class CampaignsController < AuthorizedController
   def create
     @campaign = musician.campaigns.build(campaign_params)
     if @campaign.save
+      LocalTrackFactory.new(@campaign).create
       redirect_to music_path, notice: 'Campaign created!'
     else
       render 'new'
