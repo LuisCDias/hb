@@ -24,11 +24,19 @@ class TrackInfo
   attr_reader :track_id
 
   def resized_artwork
-    track_info.artwork_url.sub("large", "t200x200")
+    if track_info.artwork_url?
+      track_info.artwork_url.sub("large", "t200x200")
+    else
+      default_artwork_url.sub("large", "t200x200")
+    end
   end
 
   def track_info
     SoundcloudGateway::SoundcloudTrackInfo.new(track_id).
       get_soundcloud_track_info
+  end
+
+  def default_artwork_url
+    "https://i1.sndcdn.com/artworks-000055452316-se7lpm-large.jpg?aa1a7cb"
   end
 end
