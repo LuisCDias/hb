@@ -1,7 +1,7 @@
 class LocalTrack < ActiveRecord::Base
   belongs_to :campaign
 
-  def self.update_from_soundcloud_info(track_info)
+  def update_from_soundcloud_info(track_info)
     update_attributes(
       soundcloud_id: campaign.track_id,
       permalink_url: track_info.track_permalink,
