@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <%= link_to root_path, {class: "brand", id: "homelogo"} do %>
-      <i class="icon-rocket"></i> headblendr <small>beta</small>
+      <%= image_tag "logo.png" %> <small>beta</small>
     <% end %>
    <!-- <form class="navbar-search pull-left hidden-phone">
       <%= form_tag campaigns_path, :method => 'get', :id => 'campaign_search' do %>
@@ -9,12 +9,17 @@
     <% end %>
     </form> -->
     <ul class="nav pull-right">
+      <% if current_user %>
+        <% if current_user.admin? %>
+          <li class="active"><%= link_to "<i class='icon-dashboard'></i> Admin".html_safe, admins_path %></li>
+        <% end %>
+      <% end %>
       <li class="active hidden-phone">
         <%= link_to music_path do %>
-          <i class="icon-heart"></i> Music
+          <i class="icon-music"></i> Music
         <% end %>
       </li>
      <%= navigation_for current_user %>
-   </ul>
+    </ul>
   </div>
 </div>

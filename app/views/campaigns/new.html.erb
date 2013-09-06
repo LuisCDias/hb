@@ -44,7 +44,7 @@
       <div class="span6 offset3 widget text-align-center">
         <%= form.collection_select(
          :track_id,
-         @campaign.musician.tracks,
+         @campaign.musician.user.soundcloud_account.get_tracks_for_musician,
          :id,
          :title,
           {
@@ -54,7 +54,7 @@
            id: 'country'}
         ) %>
 <p>or</p>
-        <%= link_to 'http://soundcloud.com/upload' do %>
+        <%= link_to 'http://soundcloud.com/upload', :target => "_blank" do %>
           <p class='btn btn-info btn-large span12'>
             upload a new one
           </p>
@@ -68,13 +68,13 @@
     </div>
     <div class="row-fluid">
       <div class="span6 offset3 widget text-align-center">
-        <%= form.text_field :requested_likes, required: true, class: 'span12', placeholder: "max 25" %>
+        <%= form.text_field :requested_likes, required: true, class: 'span12', placeholder: "max 50" %>
       </div>
     </div>
     <div class="row-fluid">
       <div class="span6 offset3 text-align-center">
         <%= link_to artist_lounge_path do %>
-          <button type="button" class="btn btn-large" data-placement="top">
+          <button type="button" class="btn btn-warning btn-large" data-placement="top">
             &nbsp;Back&nbsp;
           </button>
         <% end %>

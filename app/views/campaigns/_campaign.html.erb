@@ -1,13 +1,15 @@
 <%= div_for campaign, class: 'span3' do %>
-  <section class="widget campaign">
+  <section class="widget campaign" >
+  
     <header>
-      <h4><%= link_to campaign.name, campaign_path(campaign) %></h4>
-      <p>by <%= link_to campaign.musician_name, musician_path(campaign.musician) %></p>
+      <h4><%= link_to truncate(campaign.name, length: 25), campaign_path(campaign) %></h4>
+      <p>by <%= truncate(campaign.musician_name, length: 20) %> | <%= link_to truncate(campaign.musician.soundcloud_account.soundcloud_username, length: 20), musician_path(campaign.musician) %></p>
     </header>
     <div class="body">
       <div class="text-align-center">
-        <%= link_to campaign.track_permalink, class: 'stratus' do %>
-          <%= image_tag campaign.artwork_for_track, class: 'campaignartwork' %>
+        
+        <%= link_to campaign.track_permalink, class: 'stratus ' do %>
+          <%= image_tag campaign.artwork_for_track, class: 'campaignartwork  img-rounded' %>
         <% end %>
       </div>
       <br />
@@ -29,7 +31,7 @@
         </li>
       </ul>
       <div class="text-align-center">
-        <%= campaign_controls_for campaign, current_user %>
+       <%= campaign_controls_for campaign, current_user %>
       </div>
     </div>
   </section>

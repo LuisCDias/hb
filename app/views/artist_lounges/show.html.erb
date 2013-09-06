@@ -86,7 +86,7 @@
           <%= link_to new_campaign_path do %>
             <button type="submit"
               class="btn btn-info btn-large btncampaign">
-              New Campaign
+              <i class="icon-plus"></i> New Campaign
             </button>
           <% end %>
         </div>
@@ -125,7 +125,7 @@
                     campaign_path(campaign),
                     method: :delete,
                     confirm: "This campaign will be deleted, are you sure?",
-                    class: 'warning'
+                    class: 'btn btn-small btn-danger'
                   %>
                 </td>
               </tr>
@@ -142,7 +142,7 @@
                 { style: "height: 25px;" } %>
             </h5>
             <p class="hidden-iphone">
-              <%= @lounge.musician_description %>
+              <%= truncate(@lounge.musician_description, length: 400) %>
             </p>
           </div>
         </div>

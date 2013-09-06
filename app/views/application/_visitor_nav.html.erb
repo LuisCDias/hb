@@ -1,3 +1,25 @@
-<li class="active introhome">
-  <%= link_to "login", new_user_session_path %>
-</li>
+<ul class="nav pull-right ">
+          <li class="divider-vertical"></li>
+          <li class="active"><%= link_to "<i class='icon-user'></i> Sign Up".html_safe, new_user_registration_path %></li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown introhome  ">
+            <a class="dropdown-toggle" id="whitefont" href="#" data-toggle="dropdown"><i class='icon-heart-empty'></i> Sign In <strong class="caret"></strong></a>
+            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+            	<%= link_to user_omniauth_authorize_path(:facebook, origin: music_path) do %>
+            	<%= image_tag "connectsmall.png" %>
+            	<% end %>
+            	
+            	
+             <%= form_for("user", :url => user_session_path) do |f| %>
+             <p></p>
+             <p class="muted">or</p>
+
+  <%= f.text_field :email, placeholder: "email" %>
+  <%= f.password_field :password, placeholder: "password" %>
+  <%= f.submit "Sign in", class: "btn btn-info" %>
+
+  <p></p>
+<% end %>
+            </div>
+          </li>
+        </ul>
