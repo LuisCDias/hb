@@ -1,10 +1,15 @@
 class CampaignsController < AuthorizedController
-  skip_filter :authenticate_user!, only: [:index]
+  skip_filter :authenticate_user!, only: [:index, :show]
 
   def index
     @campaigns = Campaign.search(params[:search]).
       order("created_at DESC").
-      paginate(:per_page => 8, :page => params[:page])
+      paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

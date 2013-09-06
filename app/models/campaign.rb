@@ -69,4 +69,6 @@ class Campaign < ActiveRecord::Base
       all
     end
   end
+
+  self.per_page = 8
 end
