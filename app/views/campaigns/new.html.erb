@@ -44,11 +44,10 @@
       <div class="span6 offset3 widget text-align-center">
         <%= form.collection_select(
          :track_id,
-         @campaign.musician.user.soundcloud_account.get_tracks_for_musician,
+         @campaign.musician.tracks_for_musician,
          :id,
          :title,
           {
-           placeholder: 'Select category',
            include_blank:'Please select a track'},
           {class: 'select-block-level chzn-select',
            id: 'country'}
