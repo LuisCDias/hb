@@ -9,11 +9,6 @@
     <% end %>
     </form> -->
     <ul class="nav pull-right">
-      <% if current_user %>
-        <% if current_user.admin? %>
-          <li class="active"><%= link_to "<i class='icon-dashboard'></i> Admin".html_safe, admins_path %></li>
-        <% end %>
-      <% end %>
       <li class="active hidden-phone">
         <%= link_to music_path do %>
           <i class="icon-music"></i> Music
