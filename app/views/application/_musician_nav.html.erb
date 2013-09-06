@@ -1,12 +1,7 @@
 <li class="active">
-  <%= link_to newsletters_path do %>
-    <i class="icon-book"></i> Newsletters
-  <% end %>
-</li>
-<li class="active">
-  <%= link_to launchbase_path do %>
-    <i class="icon-rocket"></i> Launchbase
-  <% end %>
+<%= link_to launchbase_path do %>
+  <i class="icon-rocket"></i> Launchbase
+<% end %>
 </li>
 </li>
 <li class="dropdown introhome" >
@@ -18,17 +13,17 @@
   <li>
   <%= link_to user_settings_path do %>
     <i class="icon-cog"></i> Settings
-
-  <% end %></li>
+  <% end %>
+  </li>
   <li>
   <%= link_to artist_lounge_path do %>
     <i class="icon-play"></i> Artist Lounge
   <% end %>
   </li>
   <li>
-    <%= link_to sign_out_path do %>
-      <i class="icon-download"></i> Logout
-    <% end %>
+  <%= link_to sign_out_path do %>
+    <i class="icon-download"></i> Logout
+  <% end %>
   </li>
 </ul>
 </li>
