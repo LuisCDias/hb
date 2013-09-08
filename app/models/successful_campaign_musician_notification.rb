@@ -16,9 +16,6 @@ class SuccessfulCampaignMusicianNotification
   end
 
   def send_notification_to(musician_email)
-    UserMailer.delay.campaign_successful_musician(
-      musician_email,
-      campaign
-    ).deliver
+    UserMailer.delay.campaign_successful_musician(musician_email, campaign)
   end
 end

@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
 
   def campaign_successful_musician(musician_email, campaign_name)
     @campaign_name = campaign_name
-    mail(to: musician_email, subject: campaign_name + " is launched")
+    mail(to: musician_email, subject: @campaign_name + " is launched")
   end
 
   def campaign_deleted(musician_email, campaign)

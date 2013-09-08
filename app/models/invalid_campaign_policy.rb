@@ -17,7 +17,7 @@ class InvalidCampaignPolicy
   end
 
   def notify_musician
-    UserMailer.delay.campaign_deleted(musician_email, campaign).deliver
+    UserMailer.delay.campaign_deleted(musician_email, campaign)
   end
 
   def sweep_campaign

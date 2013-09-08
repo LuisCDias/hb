@@ -16,6 +16,6 @@ class SignupNotification
   end
 
   def send_notification_to(user_email)
-    UserMailer.delay.signup_confirmation(user_email).deliver
+    UserMailer.delay.signup_confirmation(user_email)
   end
 end
