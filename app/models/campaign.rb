@@ -14,6 +14,10 @@ class Campaign < ActiveRecord::Base
     message: 'are limited to 25'
   validates :requested_likes, presence: true
 
+  def category_name
+    category.name
+  end
+
   def is_available_for?(user)
     true unless backers.include? user
   end
