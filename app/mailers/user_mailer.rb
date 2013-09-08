@@ -8,17 +8,17 @@ class UserMailer < ActionMailer::Base
   def campaign_created(musician, campaign_name)
     @musician = musician
     @campaign_name = campaign_name
-    mail(to: @musician.email, subject: @musician.name + " up, up, up!")
+    mail(to: @musician.email, subject: "#{@musician.name} up, up, up!")
   end
 
   def campaign_successful_fan(backer, campaign)
     @campaign = campaign
-    mail(to: backer, subject: @campaign.name + " is now available for download")
+    mail(to: backer, subject: "#{@campaign.name} is now available for download")
   end
 
   def campaign_successful_musician(musician_email, campaign_name)
     @campaign_name = campaign_name
-    mail(to: musician_email, subject: @campaign_name + " is launched")
+    mail(to: musician_email, subject: "#{@campaign_name} is launched")
   end
 
   def campaign_deleted(musician_email, campaign)
