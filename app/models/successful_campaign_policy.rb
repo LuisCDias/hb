@@ -19,10 +19,10 @@ class SuccessfulCampaignPolicy
   end
 
   def notify_backers
-    SuccessfulCampaignBackersNotification.new(campaign).delay.deliver
+    SuccessfulCampaignBackersNotification.delay.new(campaign).deliver
   end
 
   def notify_musician
-    SuccessfulCampaignMusicianNotification.new(campaign).delay.deliver
+    SuccessfulCampaignMusicianNotification.delay.new(campaign).deliver
   end
 end
