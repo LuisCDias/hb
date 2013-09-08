@@ -4,6 +4,8 @@ class Musician < ActiveRecord::Base
   has_one :soundcloud_account, dependent: :destroy
 
   delegate :access_token, to: :soundcloud_account
+  delegate :email, to: :user
+  delegate :name, to: :user
 
   def description
     musician_info.description
