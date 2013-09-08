@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :campaign do
-    musician_name "Example Musician"
     name "Example Campaign"
+    musician_name "Zee Artiste"
+    requested_likes 1
+    musician nil
   end
 end

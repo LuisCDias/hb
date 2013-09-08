@@ -5,7 +5,7 @@ describe SignupNotification do
     user_params = attributes_for :user
 
     expect(UserMailer).to receive(:signup_confirmation).
-      with(user_params[:email]).
+      with(user_params).
       and_return(double('Mailer', deliver: true))
 
     create :user, user_params

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 feature 'A visitor can sign up' do
-  scenario 'with an email address and a password' do
-    sign_up_with 'user@example.com', 'example_pass'
+  scenario 'providing a name, email address and a password' do
+    sign_up_as 'Test user', 'user@example.com', 'example_pass'
 
     expect(page).
       to have_content 'Welcome! You have signed up successfully.'
