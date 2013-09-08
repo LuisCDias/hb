@@ -4,6 +4,7 @@ ruby '2.0.0'
 
 gem 'coffee-rails'
 gem 'delayed_job_active_record', '>= 4.0.0.beta2'
+gem 'delayed_job_web'
 gem 'devise'
 gem 'flutie'
 gem 'font-awesome-rails'

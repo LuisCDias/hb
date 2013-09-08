@@ -29,4 +29,6 @@ Hb::Application.routes.draw do
   get 'pages/home' => 'high_voltage/pages#privacy', id: 'privacy'
   get 'pages/home' => 'high_voltage/pages#fans', id: 'fans'
   get 'pages/home' => 'high_voltage/pages#musicians', id: 'musicians'
+
+  get '/delayed_job', to: DelayedJobWeb, anchor: false
 end
