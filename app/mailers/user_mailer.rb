@@ -13,8 +13,10 @@ class UserMailer < ActionMailer::Base
   end
 
   def campaign_successful_fan(backer, campaign)
-    @campaign = campaign
-    mail(to: backer, subject: "#{@campaign.name} is now available for download")
+    @campaign_name = campaign.name
+    @campaign_track_permalink = campaign.track_permalink
+
+    mail(to: backer, subject: "#{@campaign_name} is now available for download")
   end
 
   def campaign_successful_musician(musician_email, campaign_name)
