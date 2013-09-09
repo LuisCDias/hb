@@ -1,8 +1,9 @@
 class UserMailer < ActionMailer::Base
   default from: "tiago@headblendr.com"
 
-  def signup_confirmation(user_email)
-    mail(to: user_email, subject: "Headblendr Loves You")
+  def signup_confirmation(user)
+    @user = user
+    mail(to: @user.email, subject: "Headblendr Loves You")
   end
 
   def campaign_created(musician, campaign_name)

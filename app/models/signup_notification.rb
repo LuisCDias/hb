@@ -1,21 +1,17 @@
 class SignupNotification
+  attr_reader :user
+
   def initialize(user)
     @user = user
   end
 
   def deliver
-    send_notification_to user_email
+    send_notification_to user
   end
 
   private
 
-  attr_reader :user
-
-  def user_email
-    user.email
-  end
-
-  def send_notification_to(user_email)
-    UserMailer.delay.signup_confirmation(user_email)
+  def send_notification_to(user)
+    UserMailer.delay.signup_confirmation(user)
   end
 end
