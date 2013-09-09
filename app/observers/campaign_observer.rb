@@ -9,7 +9,7 @@ class CampaignObserver < ActiveRecord::Observer
   private
 
   def send_campaign_created_notification(campaign)
-    CampaignCreatedNotification.new campaign
+    CampaignCreatedNotification.new(campaign).deliver
   end
 
   def update_campaign_track_soundcloud_metadata(campaign)
