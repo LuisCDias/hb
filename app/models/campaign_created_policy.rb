@@ -4,6 +4,7 @@ class CampaignCreatedPolicy
   end
 
   def process
+    create_local_track_for_campaign
     update_campaign_track_soundcloud_metadata
     send_campaign_created_notification
   end
@@ -11,6 +12,10 @@ class CampaignCreatedPolicy
   private
 
   attr_reader :campaign
+
+  def create_local_track_for_campaign
+    LocalTrackFactory.new(campaign).create
+  end
 
   def send_campaign_created_notification(campaign)
     CampaignCreatedNotification.delay.new(campaign)
