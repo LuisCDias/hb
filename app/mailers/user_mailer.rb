@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
 
   def campaign_created(musician, campaign_name)
     @musician = musician
-    @campaign_name = campaign_name
+    @campaign = campaign
     mail(to: @musician.email, subject: "#{@musician.name} up, up, up!")
   end
 
