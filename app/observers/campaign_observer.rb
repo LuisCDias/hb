@@ -3,7 +3,6 @@ class CampaignObserver < ActiveRecord::Observer
 
   def after_create(campaign)
     send_campaign_created_notification campaign
-    create_local_track_for campaign
   end
 
   private
