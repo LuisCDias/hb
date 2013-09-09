@@ -2,17 +2,12 @@ class CampaignObserver < ActiveRecord::Observer
   observe :campaign
 
   def after_create(campaign)
-    send_campaign_created_notification campaign
+    run_created_campaign_policy_for campaign
   end
 
   private
 
-  def send_campaign_created_notification(campaign)
-    CampaignCreatedNotification.new(campaign).deliver
-  end
-
-  def update_campaign_track_soundcloud_metadata(campaign)
-    SoundcloudGateway::TrackMetadataUpdater.new(campaign).
-      update_track_metadata
+  def run_created_campaign_policy_for(campaign)
+    CampaignCreatedPolicy.new(campaign).process
   end
 end
