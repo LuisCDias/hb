@@ -11,15 +11,11 @@ class CampaignCreatedNotification
 
   attr_reader :campaign
 
-  def campaign_name
-    campaign.name
-  end
-
   def musician
     campaign.musician
   end
 
   def send_notification_to(musician)
-    UserMailer.delay.campaign_created(musician, campaign_name)
+    UserMailer.campaign_created(musician, campaign)
   end
 end

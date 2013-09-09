@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Headblendr Loves You")
   end
 
-  def campaign_created(musician, campaign_name)
+  def campaign_created(musician, campaign)
     @musician = musician
     @campaign = campaign
     mail(to: @musician.email, subject: "#{@musician.name} up, up, up!")
