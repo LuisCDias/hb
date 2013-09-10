@@ -4,25 +4,25 @@ class SuccessfulCampaignPolicy
   end
 
   def process
-    set_campaign_track_as_downloadable
-    notify_backers
     notify_musician
+    notify_backers
+    set_campaign_track_as_downloadable
   end
 
   private
 
   attr_reader :campaign
 
-  def set_campaign_track_as_downloadable
-    SoundcloudGateway::TrackMetadataUpdater.new(campaign).
-      set_track_as_downloadable
+  def notify_musician
+    SuccessfulCampaignMusicianNotification.new(campaign).deliver
   end
 
   def notify_backers
-    SuccessfulCampaignBackersNotification.delay.new(campaign)
+    SuccessfulCampaignBackersNotification.new(campaign).deliver
   end
 
-  def notify_musician
-    SuccessfulCampaignMusicianNotification.delay.new(campaign)
+  def set_campaign_track_as_downloadable
+    SoundcloudGateway::TrackMetadataUpdater.new(campaign).
+      set_track_as_downloadable
   end
 end

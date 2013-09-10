@@ -12,10 +12,11 @@ class SuccessfulCampaignBackersNotification
   attr_reader :campaign
 
   def backers
-    campaign.backers.map(&:email)
+    campaign.backers
   end
 
-  def send_notification_to(backer)
-    UserMailer.delay.campaign_successful_fan(backer, campaign)
+  def send_notification_to(backers)
+    UserMailer.delay.
+      successful_campaign_notification_for_backer(backer, campaign)
   end
 end

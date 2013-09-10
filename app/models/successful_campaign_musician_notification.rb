@@ -1,25 +1,19 @@
 class SuccessfulCampaignMusicianNotification
   def initialize(campaign)
     @campaign = campaign
+    @musician = campaign.musician
   end
 
   def deliver
-    send_notification_to musician_email
+    send_notification_to_musician
   end
 
   private
 
-  attr_reader :campaign
+  attr_reader :campaign, :musician
 
-  def campaign_name
-    campaign.name
-  end
-
-  def musician_email
-    campaign.musician.email
-  end
-
-  def send_notification_to(musician_email)
-    UserMailer.delay.campaign_successful_musician(musician_email, campaign_name)
+  def send_notification_to_musician
+    UserMailer.delay.
+      successful_campaign_notification_for_musician(campaign, musician)
   end
 end

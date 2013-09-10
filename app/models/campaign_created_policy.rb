@@ -17,12 +17,12 @@ class CampaignCreatedPolicy
     LocalTrackFactory.new(campaign).create
   end
 
-  def send_campaign_created_notification
-    CampaignCreatedNotification.delay.new(campaign)
-  end
-
   def update_campaign_track_soundcloud_metadata
     SoundcloudGateway::TrackMetadataUpdater.new(campaign).
       update_track_metadata
+  end
+
+  def send_campaign_created_notification
+    CampaignCreatedNotification.new(campaign)
   end
 end

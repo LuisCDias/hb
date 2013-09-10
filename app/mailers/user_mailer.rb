@@ -6,24 +6,21 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Headblendr Loves You")
   end
 
-  def campaign_created(musician, campaign)
-    @musician = musician
+  def campaign_created(campaign, musician)
     @campaign = campaign
+    @musician = musician
     mail(to: @musician.email, subject: "#{@musician.name} up, up, up!")
   end
 
-  def campaign_successful_fan(backer, campaign)
-    @campaign_name = campaign.name
-    @campaign_track_permalink = campaign.track_permalink
-
-    mail(to: backer, subject: "#{@campaign_name} is now available for download")
+  def successful_campaign_notification_for_backer(backer, campaign)
+    @backer = backer
+    @campaign = campaign
+    mail(to: @backer.email, subject: "#{@campaign.name} is now available for download")
   end
 
-  def campaign_successful_musician(musician_email, campaign_name)
-    @campaign_name = campaign_name
-    mail(to: musician_email, subject: "#{@campaign_name} is launched")
-  end
-
-  def campaign_deleted(musician_email, campaign)
+  def successful_campaign_notification_for_musician(campaign, musician)
+    @campaign = campaign
+    @musician = musician
+    mail(to: @musician.email, subject: "#{@campaign.name} is launched")
   end
 end
