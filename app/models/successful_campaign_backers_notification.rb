@@ -15,7 +15,7 @@ class SuccessfulCampaignBackersNotification
     campaign.backers
   end
 
-  def send_notification_to(backers)
+  def send_notification_to(backer)
     UserMailer.delay.
       successful_campaign_notification_for_backer(backer, campaign)
   end
