@@ -23,6 +23,6 @@ class CampaignCreatedPolicy
   end
 
   def send_campaign_created_notification
-    CampaignCreatedNotification.new(campaign)
+    CampaignCreatedNotification.new(campaign).deliver
   end
 end
