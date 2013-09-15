@@ -4,6 +4,13 @@
       <%= image_tag "logo.png" %>
     <% end %>
     <div class="nav-collapse collapse" id="nav-collapse-03">
+    	 <ul class="nav pull-left">
+  <li>
+    <%= link_to music_path do %>
+    <span class="fui-volume"></span> Music
+    <% end %>
+  </li>
+ </ul>
      <%= navigation_for current_user %>
     </div>
   </div>

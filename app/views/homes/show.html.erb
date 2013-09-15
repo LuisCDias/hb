@@ -1,38 +1,147 @@
-<% content_for(:extra_body_classes, 'background-light sidebar-hidden frontpage') %>
-  <div class="wrap">
-    <div class="content container-fluid">
-      <div class="row-fluid">
-        <div class="span12 text-align-center boxhome">
-          <h1>launch dance music today</h1>
+<div id="homeintro">
+<div class="container">
+<div class="row-fluid">
+
+    <div class="demo-row frontslider">
+        <div class="demo-title">
         </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span12 text-align-center">
-          <div class="span4 offset2 widget  text-align-center">
-            <h3>for fans <i class="icon-hand-up"></i></h3>
+        <div class="demo-content-wide">
+          <div id="myCarousel" class="carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+              <div class="active item">
+                <%= image_tag "macshowcase.png" %>
+              </div>
+              
+            </div>
+            <!-- Carousel nav -->
           </div>
-          <div class="span4 widget text-align-center">
-            <h3>for musicians <i class="icon-hand-up"></i></h3>
-          </div>
+        </div><!-- /.demo-content -->
+      </div>
+</div>
+
+<div class="row-fluid">
+<h1 class="fronttitle">get signed by dance music labels</h1></div>
+<p class="fronttext">Headblendr is the ultimate companion for the edm producer</p>
+<div class="homesocial"><a href="#hello" role="button" class="btn btn-small btn-info" data-toggle="modal">
+            try today for free
+          </a>
+    </div>
+    
+    
+  </div>
+</div>
+
+<div class="static-modal-backdrop" id="featurelist">
+  <div class="container">
+    <div class="span12">
+      <div class="span3 offset1">
+        <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <h3><span class="fui-volume"></span> Pros Only</h3>
+        </div>
+        <div class="modal-body">
+          <p>An error message is information displayed when an <a href="#">unexpected condition occurs</a>, usually on a computer or other device. </p>
+          <a href="#" class="btn btn-block btn-primary">Learn More</a>
         </div>
       </div>
-      <div class="row-fluid">
-        <div class="span12 text-align-center">
-          <%= link_to "http://vimeo.com/72393133?autoplay=1", :target => "_blank" do  %>
-            <%= image_tag "play2.png", {style: "height: 100px"} %>
-          <% end %>
-          <h2>don't press play</h2>
+      </div>
+      <div class="span3">
+        <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <h3><span class="fui-book"></span> Full Analysis</h3>
+        </div>
+        <div class="modal-body">
+          <p>An error message is information displayed when an <a href="#">unexpected condition occurs</a>, usually on a computer or other device. </p>
+          <a href="#" class="btn btn-block btn-primary">Learn More</a>
         </div>
       </div>
-      <div class="row-fluid">
-        <div class="span12"></div>
       </div>
-      <div class="row-fluid">
-        <div class="span12 text-align-center">
-          <%= link_to user_omniauth_authorize_path(:facebook, origin: music_path) do %>
-            <%= image_tag "connectfb.png" %>
-          <% end %> 
+      <div class="span3">
+        <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <h3><span class="fui-heart"></span> Quick Response</h3>
+        </div>
+        <div class="modal-body">
+          <p>An error message is information displayed when an <a href="#">unexpected condition occurs</a>, usually on a computer or other device. </p>
+          <a href="#" class="btn btn-block btn-primary">Learn More</a>
         </div>
       </div>
     </div>
- </div>
+  </div>
+  </div>
+     
+</div>
+<div class="row-fluid">
+<h1 class="fronttitle">our awesome features</h1></div>
+<p class="fronttext signupblue">With an awesome price tag! Plans start at just $14 a month </p>
+
+
+<div class="demo-row demo-illustrations">
+
+        <div class="demo-content-wide">
+          <p class="lead fronttitle">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur  </p>
+          <div><img alt="Camera 2x" src="/assets/icons/Camera_2x.png"></div>
+          <div><img alt="Arrow 2x" src="/assets/icons/Arrow_2x.png"></div>
+          <div><img alt="Dude 2x" src="/assets/icons/Dude_2x.png"></div>
+          <div><img alt="Banner 2x" src="/assets/icons/Banner_2x.png"></div>
+          <div><img alt="Yin and yang 2x" src="/assets/icons/Yin-and-Yang_2x.png"></div>
+          <p class="lead fronttitle">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur  </p>
+</div>
+<div class="demo-content-wide">
+          <div><img alt="Calendar 2x" src="/assets/icons/Calendar_2x.png"></div>
+          <div><img alt="Bulb 2x" src="/assets/icons/Bulb_2x.png"></div>
+          <div><img alt="Card 2x" src="/assets/icons/Card_2x.png"></div>
+          <div><img alt="Chat 2x" src="/assets/icons/Chat_2x.png"></div>
+          <div><img alt="Clipboard 2x" src="/assets/icons/Clipboard_2x.png"></div>
+        </div><!-- /.demo-content -->
+      </div>
+    </div>
+
+<div class="static-modal-backdrop" id="featurelist">
+  <div class="container">
+
+      <div class="span12">
+         <p class="lead fronttitle">Tired of scrolling? Launch some great music</p>
+      <div class="span3 offset1">
+        <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <h3><span class="fui-volume"></span> For Musicians</h3>
+        </div>
+        <div class="modal-body">
+          <p>An error message is information displayed when an <a href="#">unexpected condition occurs</a>, usually on a computer or other device. </p>
+          <a href="#" class="btn btn-block btn-info">Launch</a>
+        </div>
+      </div>
+      </div>
+      <div class="span3">
+        <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <h3><span class="fui-book"></span> For Labels</h3>
+        </div>
+        <div class="modal-body">
+          <p>An error message is information displayed when an <a href="#">unexpected condition occurs</a>, usually on a computer or other device. </p>
+          <a href="#" class="btn btn-block btn-info">Launch</a>
+        </div>
+      </div>
+      </div>
+      <div class="span3">
+        <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+        <div class="modal-header">
+          <h3><span class="fui-heart"></span> For Fans</h3>
+        </div>
+        <div class="modal-body">
+          <p>An error message is information displayed when an <a href="#">unexpected condition occurs</a>, usually on a computer or other device. </p>
+          <a href="#" class="btn btn-block btn-info">Launch</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    </div></div>
+
+
+    
+
+  
