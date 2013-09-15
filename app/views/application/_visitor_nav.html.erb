@@ -1,25 +1,23 @@
-<ul class="nav pull-right ">
-          <li class="divider-vertical"></li>
-          <li class="active"><%= link_to "<i class='icon-user'></i> Sign Up".html_safe, new_user_registration_path %></li>
-          <li class="divider-vertical"></li>
-          <li class="dropdown introhome  ">
-            <a class="dropdown-toggle" id="whitefont" href="#" data-toggle="dropdown"><i class='icon-heart-empty'></i> Sign In <strong class="caret"></strong></a>
-            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-            	<%= link_to user_omniauth_authorize_path(:facebook, origin: music_path) do %>
-            	<%= image_tag "connectsmall.png" %>
-            	<% end %>
-            	
-            	
-             <%= form_for("user", :url => user_session_path) do |f| %>
-             <p></p>
-             <p class="muted">or</p>
+ <ul class="nav pull-right">
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#hello" data-toggle="modal"><i class="fui-heart"></i> signup</a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fui-user"></i> login
+                      </a>
+                      <ul class="dropdown-menu">
+                      <div class="formhome">
+                        <%= simple_form_for("user", :url => user_session_path) do |f|  %>
+                        <%= f.input :email, placeholder: "email", required: true, label: false %></br>
+                         <%= f.input :password, placeholder: "password", required: true, label: false %></br>
+                        <%= f.submit "login", class: "btn btn-info btn-block" %>
+                        <% end %>
+                      </div>
+                      </ul>
+                    </li>
+              </ul>
 
-  <%= f.text_field :email, placeholder: "email" %>
-  <%= f.password_field :password, placeholder: "password" %>
-  <%= f.submit "Sign in", class: "btn btn-info" %>
+         
 
-  <p></p>
-<% end %>
-            </div>
-          </li>
-        </ul>

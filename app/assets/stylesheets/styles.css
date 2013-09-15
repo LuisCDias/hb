@@ -1,0 +1,155 @@
+.campaignsindex {
+
+  padding: 60px;
+margin-bottom: 30px;
+background: url("ida2.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+min-height: 300px;
+}
+
+.featuredtext {
+  color: white;
+}
+
+.headerartwork {
+  max-height: 15px;
+  max-width: 15px;
+}
+
+.backcolumn {
+  height: 100vh;
+  background-color: #f4f5f6;
+
+}
+
+.dashboardheader {
+  padding: 60px;
+  margin-bottom: 30px;
+}
+
+.dashboardmain {
+}
+
+.campaignstableartwork {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+.campaignstable {
+  padding-top: 40px;
+}
+
+.dashboardtext {
+  color: #34495e;
+}
+
+.dashboardlinks{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 20px;
+}
+
+.dashboardicons{
+  max-height: 35px;
+  max-width: 35px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+}
+
+.dashboardmenu {
+  padding-top: 60px;
+}
+
+.dashboard {
+  background-color: white;
+}
+
+#firstrequest {
+  height:100vh;
+ background: url("geometry.png");
+}
+
+/* Custom Alert Box */
+
+.alert {
+  position:absolute;
+  left:0px;
+  width: 25%;
+  z-index:999;
+  padding: 10px 35px 10px 14px;
+  margin: 20px 0;
+  opacity:0.9;
+}
+
+.formhome {
+  padding: 10px;
+}
+
+.navbar-inner {
+-webkit-border-radius: 0px;
+}
+
+body {
+  background-color: #ecf0f1;
+    padding-top: 50px;
+
+
+}
+
+.fronttitle {
+  
+  text-align: center;
+  word-wrap: break-word;
+  color: #3dbff0;
+}
+
+.fronttext {
+  
+  text-align: center;
+  word-wrap: break-word;
+  color: white;
+}
+
+.frontslider {
+	padding-top: 40px;
+}
+
+.homesocial {
+
+  position: relative;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
+
+}
+
+#homeintro {
+
+    height:100vh;
+     background: url("bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+
+.dashboardoptions {
+  margin-top: 30px;
+}
+
+#inlineformelements {
+  display: inline;
+}
+
+.signupblue {
+  color: #3dbff0;
+}
+
+.tracksubmit {
+  padding-bottom: 30px;
+}
