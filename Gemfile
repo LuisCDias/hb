@@ -8,6 +8,7 @@ gem 'delayed_job_web'
 gem 'devise'
 gem 'flutie'
 gem 'font-awesome-rails'
+gem "twitter-bootstrap-rails"
 gem 'fontello-rails', git: 'git://github.com/pedrosmmoreira/fontello-rails.git'
 gem 'high_voltage'
 gem 'jquery-rails'
