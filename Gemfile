@@ -11,7 +11,7 @@ gem 'font-awesome-rails'
 gem 'fontello-rails', git: 'git://github.com/pedrosmmoreira/fontello-rails.git'
 gem 'high_voltage'
 gem 'jquery-rails'
-gem 'jquery-migrate-rails'
+gem 'jquery-ui-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg'
@@ -41,7 +41,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara-webkit', '>= 0.14.1', require: false
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
