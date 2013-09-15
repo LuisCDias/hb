@@ -1,41 +1,12 @@
-<%= div_for campaign, class: 'span3' do %>
-  <section class="widget campaign" >
-    <header>
-    <h4>
-      <%= link_to truncate(campaign.name, length: 25),
-        campaign_path(campaign) %>
-      </h4>
-      <p>by 
-      <%= truncate(campaign.musician_name, length: 20) %> | 
-      <%= link_to truncate(campaign.musician.soundcloud_account.soundcloud_username, length: 20), musician_path(campaign.musician) %></p>
-    </header>
-    <div class="body">
-      <div class="text-align-center">
-        <%= link_to campaign.track_permalink, class: 'stratus ' do %>
-          <%= image_tag campaign.artwork_for_track, class: 'campaignartwork img-rounded' %>
-        <% end %>
-      </div>
-      <br />
-      <ul class="server-stats">
-        <li>
-          <div class="key pull-right">
-            <%= campaign.progress %>%
-          </div>
-          <div class="stat">
-            <% if campaign.successful? %>
-              <div class="info">Campaign launched</div>
-            <% else %>
-              <div class="info"><%= campaign.reservations_left %> left</div>
-            <% end %>
-            <div class="progress progress-striped">
-              <div class="bar" style="width: <%= campaign.progress %>%;"></div>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div class="text-align-center">
-       <%= campaign_controls_for campaign, current_user %>
-      </div>
-    </div>
-  </section>
-<% end %>
+
+  <li class="span3 ">
+                <div class="caption">
+                    <p><%= link_to truncate(campaign.name, length: 25),
+        campaign_path(campaign) %> </br> <small><span class="signupblue"><strong><%= truncate(campaign.musician_name, length: 20) %> | <%= link_to truncate(campaign.musician.soundcloud_account.soundcloud_username, length: 20), musician_path(campaign.musician) %> </strong></span></small></p>
+
+                  </div>
+                <a href="#" class="thumbnail">
+                  <%= image_tag campaign.artwork_for_track %>
+                </a>
+              </li>
+

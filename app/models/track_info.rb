@@ -25,9 +25,9 @@ class TrackInfo
 
   def resized_artwork
     if track_info.artwork_url?
-      track_info.artwork_url.sub("large", "t200x200")
+      track_info.artwork_url.sub("large", "t500x500")
     else
-      default_artwork_url.sub("large", "t200x200")
+      default_artwork_url.sub("large", "t500x500")
     end
   end
 

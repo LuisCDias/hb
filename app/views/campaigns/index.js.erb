@@ -1,5 +1,0 @@
-$('.campaigngroup').append('#{escape_javascript(render partial: "campaigns/campaigns", :locals => { :campaigns => @campaigns })}');
-$('a.load-more-campaigns').attr('href', '#{campaigns_path page: @campaigns.next_page}');
- 
-- unless @campaigns.next_page
-$('a.load-more-campaigns').remove();
