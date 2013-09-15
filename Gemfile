@@ -27,6 +27,7 @@ gem 'uglifier'
 gem 'unicorn'
 gem 'will_paginate', '~>3.0'
 gem 'google-analytics-rails'
+gem 'designmodo-flatuipro-rails'
 
 
 group :development do

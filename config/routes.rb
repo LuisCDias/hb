@@ -1,4 +1,5 @@
 Hb::Application.routes.draw do
+  get "flatuipro_demo/index"
   root to: 'homes#show', via: :get
 
   devise_for :users,
