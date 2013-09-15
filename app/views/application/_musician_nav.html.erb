@@ -1,5 +1,9 @@
  <ul class="nav pull-right">
-
+<li>
+<%= link_to dashboard_path do %>
+  <i class="fui-windows"></i> Dashboard
+<% end %>
+</li>
 <li>
 <%= link_to launchbase_path do %>
   <i class="icon-rocket"></i> Launchbase
@@ -8,18 +12,13 @@
 </li>
 <li class="dropdown" >
 <a href="#" class="dropdown-toggle" id="homelogo" data-toggle="dropdown">
-  <i class="icon-user"></i> <%= current_user.name %>
+  <i class="fui-user"></i> <%= current_user.name %>
   <b class="caret"></b>
 </a>
 <ul class="dropdown-menu">
   <li>
   <%= link_to user_settings_path do %>
     <i class="icon-cog"></i> Settings
-  <% end %>
-  </li>
-  <li>
-  <%= link_to artist_lounge_path do %>
-    <i class="icon-play"></i> Artist Lounge
   <% end %>
   </li>
   <li>
