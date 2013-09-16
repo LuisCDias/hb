@@ -18,6 +18,8 @@ Hb::Application.routes.draw do
   resource :artist_lounge, only: [:show]
   resource :user_settings, only: [:show]
   resources :musicians, only: [:show]
+  resources :uploads
+
 
   get 'soundcloud/connect', to: 'soundcloud_connection#connect',
     as: :soundcloud_connect

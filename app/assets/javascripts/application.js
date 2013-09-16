@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload
 //= require twitter/bootstrap
 //= require flatuipro
+//= require jquery.ui.all
 //= require_tree .
