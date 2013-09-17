@@ -4,8 +4,7 @@ class CreateUserTracks < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :category_id
-      t.integer :user_id
-
+      t.integer :upload_id
       t.timestamps
     end
   end

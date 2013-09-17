@@ -3,7 +3,8 @@ class UserTracksController < ApplicationController
 
   # GET /user_tracks
   def index
-    @user_tracks = current_user.user_tracks
+    @user_tracks = UserTrack.all
+    @current_user_tracks = user.user_tracks
   end
 
   # GET /user_tracks/1
@@ -12,7 +13,7 @@ class UserTracksController < ApplicationController
 
   # GET /user_tracks/new
   def new
-    @user_track = user.user_tracks.new
+    @user_track = UserTrack.new
   end
 
   # GET /user_tracks/1/edit
@@ -21,7 +22,7 @@ class UserTracksController < ApplicationController
 
   # POST /user_tracks
   def create
-    @user_track = user.user_tracks.new(user_track_params)
+    @user_track = UserTrack.new(user_track_params)
 
     if @user_track.save
       redirect_to @user_track, notice: 'User track was successfully created.'
@@ -58,6 +59,6 @@ class UserTracksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_track_params
-      params.require(:user_track).permit(:name, :description, :category_id, :user_id)
+      params.require(:user_track).permit(:name, :description, :category_id, :upload_id)
     end
 end

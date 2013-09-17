@@ -11,8 +11,11 @@
     </div>
   <% end %>
 
-    <%= f.text_field :name, required: true, placeholder: "Track Name", label: false %></br>
+
+
+    <%= f.text_field :name, required: true, value: "#{@user_track.upload.upload_file_name}", label: "Track Name" %></br>
     <%= f.text_area :description, required: false, placeholder: "Description", label: false %></br>
     <%= f.association :category, required: true, label: "Track Genre" %></br>
     <%= f.submit %>
-<% end %>
+<% end %> 
+

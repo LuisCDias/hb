@@ -3,7 +3,12 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @user_track.name %>
+   <% if @user_track.name == nil %>
+        <td><%= @user_track.upload.upload_file_name %></td>
+        <% else %>
+        <td><%= @user_track.name %></td>
+        <% end %>
+  
 </p>
 
 <p>
@@ -11,10 +16,6 @@
   <%= @user_track.description %>
 </p>
 
-<p>
-  <strong>Genre:</strong>
-  <%= @user_track.category.name %>
-</p>
 
 <%= link_to 'Edit', edit_user_track_path(@user_track) %> |
 <%= link_to 'Back', user_tracks_path %>

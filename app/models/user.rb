@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_many :campaigns, through: :reservations
   has_one :musician, dependent: :destroy
   has_one :soundcloud_account, through: :musician
-  has_many :user_tracks, dependent: :destroy
+  has_many :uploads, dependent: :destroy
+  has_many :user_tracks, :through => :uploads
 
   validates :name, presence: true
 

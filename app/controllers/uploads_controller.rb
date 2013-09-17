@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @uploads = current_user.uploads
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,7 +20,7 @@ class UploadsController < ApplicationController
   # GET /uploads/new
   # GET /uploads/new.json
   def new
-    @upload = Upload.new
+    @upload = user.uploads.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +35,7 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.new(upload_params)
+    @upload = user.uploads.new(upload_params)
 
     respond_to do |format|
       if @upload.save
@@ -79,6 +79,10 @@ class UploadsController < ApplicationController
 
   private
 
+    def user
+      current_user
+    end
+
    # Use callbacks to share common setup or constraints between actions.
     def set_upload
       @upload = Upload.find(params[:id])
@@ -86,6 +90,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:upload)
+      params.require(:upload).permit(:upload, :user_id)
     end
 end
