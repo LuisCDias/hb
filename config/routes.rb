@@ -1,4 +1,6 @@
 Hb::Application.routes.draw do
+  resources :user_tracks
+
   get "flatuipro_demo/index"
   root to: 'homes#show', via: :get
 
