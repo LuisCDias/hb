@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917000430) do
+ActiveRecord::Schema.define(version: 20130917232536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "advice_requests", force: true do |t|
+    t.text     "comment"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "track_url"
+    t.boolean  "drums",       default: false
+    t.boolean  "bass",        default: false
+    t.boolean  "vocals",      default: false
+    t.boolean  "synths",      default: false
+    t.boolean  "structure",   default: false
+    t.boolean  "effects",     default: false
+    t.boolean  "mixing",      default: false
+    t.boolean  "master",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "campaigns", force: true do |t|
     t.datetime "created_at"

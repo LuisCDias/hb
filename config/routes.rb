@@ -1,4 +1,6 @@
 Hb::Application.routes.draw do
+  resources :advice_requests
+
   resources :user_tracks
 
   get "flatuipro_demo/index"

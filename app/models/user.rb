@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_one :soundcloud_account, through: :musician
   has_many :uploads, dependent: :destroy
   has_many :user_tracks, :through => :uploads
+  has_many :advice_requests, dependent: :destroy
 
   validates :name, presence: true
 

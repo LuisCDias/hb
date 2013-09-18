@@ -1,0 +1,65 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Track Url:</strong>
+  <%= @advice_request.track_url %>
+</p>
+<p>
+  <strong>Comment:</strong>
+  <%= @advice_request.comment %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @advice_request.category_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @advice_request.user_id %>
+</p>
+
+<p>
+  <strong>Drums:</strong>
+  <%= @advice_request.drums %>
+</p>
+
+<p>
+  <strong>Bass:</strong>
+  <%= @advice_request.bass %>
+</p>
+
+<p>
+  <strong>Vocals:</strong>
+  <%= @advice_request.vocals %>
+</p>
+
+<p>
+  <strong>Synths:</strong>
+  <%= @advice_request.synths %>
+</p>
+
+<p>
+  <strong>Structure:</strong>
+  <%= @advice_request.structure %>
+</p>
+
+<p>
+  <strong>Effects:</strong>
+  <%= @advice_request.effects %>
+</p>
+
+<p>
+  <strong>Mixing:</strong>
+  <%= @advice_request.mixing %>
+</p>
+
+<p>
+  <strong>Master:</strong>
+  <%= @advice_request.master %>
+</p>
+
+<%= link_to 'Edit', edit_advice_request_path(@advice_request) %> |
+<%= link_to 'Back', advice_requests_path %>
+</div>

@@ -1,0 +1,27 @@
+<%= simple_form_for(@advice_request) do |f| %>
+  <% if @advice_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advice_request.errors.count, "error") %> prohibited this advice_request from being saved:</h2>
+
+      <ul>
+      <% @advice_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    </br>
+    <%= f.input :track_url, collection: current_user.uploads.collect {|t|  [t.upload_file_name, t.upload] },required: true, label: "choose the track " %>
+    <%= f.input :comment, required: true %></br>
+    <%= f.association :category, required: true %></br>
+    <%= f.input :drums %></br>
+    <%= f.input :bass %></br>
+    <%= f.input :vocals %></br>
+    <%= f.input :synths %></br>
+    <%= f.input :structure %></br>
+    <%= f.input :effects %></br>
+    <%= f.input :mixing %></br>
+    <%= f.input :master %></br>
+    <%= f.submit %>
+<% end %>
