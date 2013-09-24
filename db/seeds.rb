@@ -17,3 +17,28 @@ Category.create( name: 'Tech House' )
 Category.create( name: 'Techno' )
 Category.create( name: 'Trance' )
 Category.create( name: 'Other' )
+
+user = User.create(
+  name: 'Campaign Maker',
+  email: 'campaign_maker@example.com',
+  password: 'campaign_maker',
+  password_confirmation: 'campaign_maker'
+)
+
+musician = Musician.create(user: user)
+
+SoundcloudAccount.create(
+  musician: musician,
+  access_token: '1-48603-47808088-cf33ec002ba918b',
+  soundcloud_avatar: 'https://i1.sndcdn.com/avatars-000044514130-7w9t5q-large.jpg?3eddc42',
+  soundcloud_profile: 'http://soundcloud.com/pedroheadblendr',
+  soundcloud_uid: '478080880',
+  soundcloud_username: 'pedroheadblendr'
+)
+
+User.create(
+  name: 'Reservation Maker',
+  email: 'reservation_maker@example.com',
+  password: 'reservation_maker',
+  password_confirmation: 'reservation_maker'
+)
