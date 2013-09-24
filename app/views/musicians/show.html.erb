@@ -4,7 +4,7 @@
     <div class="row-fluid">
       <div class="span12">
         <h2 class="page-title widget">
-          <%= @musician.soundcloud_account.soundcloud_username %>
+          <%= @musician.soundcloud_username %>
         </h2>
       </div>
     </div>
@@ -13,7 +13,7 @@
         <div class="span4 widget">
           <h4>Biography</h4>
           <p class="hidden-iphone"><%= truncate(@musician.description, length: 200 ) %></p>
-          <%= link_to @musician.soundcloud_account.soundcloud_profile, :target => "_blank" do %>
+          <%= link_to @musician.soundcloud_profile, :target => "_blank" do %>
             <button class="btn btn-info btncampaign">more on soundcloud</button>
           <% end %>
         </div>
@@ -41,8 +41,8 @@
                   </div>
                   <span class="key">Created Campaigns</span>
                   <div class="value pull-right">
-                    <span class="badge badge-info">
-                      <%= @musician.campaigns.count %>
+                    <span class="badge badge-info campaign-count">
+                      <%= @musician.campaign_count %>
                     </span>
                   </div>
                   </li>
@@ -76,10 +76,9 @@
         <div class="span4">
           <div class="text-align-center">
             <%= image_tag(
-              @musician.soundcloud_account.soundcloud_avatar,
+              @musician.soundcloud_avatar,
               { style: "height:230px;" }
             ) %>
-            
           </div>
         </div>
       </div>
@@ -88,7 +87,7 @@
       <div class="span12">
         <h4 class="widget">
           Campaigns by 
-          <%= @musician.soundcloud_account.soundcloud_username %>
+          <%= @musician.soundcloud_username %>
         </h4>
        </div>
      </div>

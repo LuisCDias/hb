@@ -5,55 +5,35 @@
   <div class="content container-fluid">
     <div class="row-fluid">
       <div class="span12 text-align-center well">
-
         <h1>Signup</h1>
-
       </div>
-
     </div>
     <div class="row-fluid">
       <div class="span6   text-align-center widget">
-        <form class="form-inline">
     <%= f.input :name, :required => true, :autofocus => true %>
     <%= f.input :email, :required => true, :autofocus => true, placeholder: 'user@domain.com' %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
     <%= f.button :submit, "Sign up", class: "btn btn-info btn-large span6" %>
-        
+  <% end %>
       </div>
       <div class="span6   text-align-center widget">
         <h3></h3>
          <%= link_to user_omniauth_authorize_path(:facebook, origin: music_path) do %>
             <%= image_tag "connectfb.png" %>
           <% end %>
-        
-          
-          
       </div>
     </div>
     <div class="row-fluid">
       <div class="span12 text-align-center well">
-
         <h3>already have an account?</h3>
         <%- if controller_name != 'sessions' %>
-  <%= link_to "login", new_session_path(resource_name), class: "btn btn-info btn-medium" %>
-<% end -%>
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-disabled btn-medium" %>
-<% end -%>
-    
-
+          <%= link_to "login", new_session_path(resource_name), class: "btn btn-info btn-medium" %>
+        <% end -%>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-disabled btn-medium" %>
+        <% end -%>
       </div>
-
     </div>
-      
-
-    
-  
-    
-
-    
   </div>
-  <% end %>
-  
 </div>

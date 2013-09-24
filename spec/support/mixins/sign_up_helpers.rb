@@ -1,23 +1,19 @@
 module SignUpHelpers
-  def sign_up_as(name, email, password)
+  def sign_up_with(user_params)
     visit root_path
     click_link 'Sign Up'
 
     within('.simple_form') do
-      fill_in 'user_name', with: name
-      fill_in 'user_email', with: email
-      fill_in 'user_password', with: password
-      fill_in 'user_password_confirmation', with: password
+      fill_in 'user_name', with: user_params[:name]
+      fill_in 'user_email', with: user_params[:email]
+      fill_in 'user_password', with: user_params[:password]
+      fill_in 'user_password_confirmation', with: user_params[:password]
       click_button 'Sign up'
     end
   end
 
   def sign_up_with_auth_provider(auth_provider)
     visit user_omniauth_authorize_path auth_provider
-  end
-
-  def params
-    attributes_for :user
   end
 end
 

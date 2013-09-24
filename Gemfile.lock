@@ -82,6 +82,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
     dotenv (0.8.0)
+    dotenv-rails (0.8.0)
+      dotenv (= 0.8.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -261,6 +263,7 @@ DEPENDENCIES
   delayed_job_active_record (>= 4.0.0.beta2)
   delayed_job_web
   devise
+  dotenv-rails
   factory_girl_rails
   flutie
   font-awesome-rails

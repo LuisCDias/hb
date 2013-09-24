@@ -7,7 +7,7 @@
       </h4>
       <p>by 
       <%= truncate(campaign.musician_name, length: 20) %> | 
-      <%= link_to truncate(campaign.musician.soundcloud_account.soundcloud_username, length: 20), musician_path(campaign.musician) %></p>
+      <%= link_to truncate(campaign.artist_name, length: 20), musician_path(campaign.musician) %></p>
     </header>
     <div class="body">
       <div class="text-align-center">

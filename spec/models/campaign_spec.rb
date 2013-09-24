@@ -4,8 +4,8 @@ describe Campaign, 'associations' do
   it { should belong_to(:musician) }
   it { should belong_to(:category) }
   it { should have_many(:backers).through(:reservations) }
-  it { should have_many(:reservations) }
-  it { should have_one(:local_track) }
+  it { should have_many(:reservations).dependent(:destroy) }
+  it { should have_one(:local_track).dependent(:destroy) }
 end
 
 describe Campaign, 'validations' do

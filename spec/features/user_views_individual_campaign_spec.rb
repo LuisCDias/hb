@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature 'User backs a campaign' do
-  scenario 'by making a reservation' do
+feature 'User views a individual campaign' do
+  scenario 'to find out more about the musician' do
     user = create :user
     musician = create :musician, user: user
     create :soundcloud_account, musician: musician
@@ -10,11 +10,10 @@ feature 'User backs a campaign' do
     create :local_track, campaign: campaign
 
     fan = create :user
-
     sign_in_as fan
 
-    click_on 'Launch this sound'
+    click_link campaign.name
 
-    expect(campaign.backers).to include fan
+    expect(page).to have_css 'h5', text: campaign.musician_name
   end
 end

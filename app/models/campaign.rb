@@ -14,6 +14,10 @@ class Campaign < ActiveRecord::Base
     message: 'are limited to 25'
   validates :requested_likes, presence: true
 
+  def artist_name
+    musician.soundcloud_username
+  end
+
   def category_name
     category.name
   end

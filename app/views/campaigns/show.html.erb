@@ -94,7 +94,7 @@
         <p class="hidden-phone">
           <%= truncate(@campaign.musician.description, length: 400) %>
          </p>
-        <%= link_to @campaign.musician.soundcloud_page, target: "_blank" do %>
+        <%= link_to @campaign.musician.soundcloud_profile, target: "_blank" do %>
           <button type="button" class="btn btn-info btncampaign"
             data-placement="top" data-original-title=".btn .btn-info">
             &nbsp;more on Soundcloud&nbsp;

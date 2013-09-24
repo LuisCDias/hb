@@ -25,7 +25,7 @@
         </div>
         <div class="span8">
            <%= button_to 'Delete user account',
-             user_registration_path, method: :delete, confirm: "If you delete, all your reservations will be lost, are you sure?", class: "btn btn-danger" %>
+             user_registration_path, method: :delete, data: { confirm: "If you delete, all your reservations will be lost, are you sure?" }, class: "btn btn-danger" %>
          </div>
       </div>
     </div>

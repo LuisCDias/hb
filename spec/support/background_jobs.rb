@@ -9,7 +9,7 @@ module BackgroundJobs
 end
 
 RSpec.configure do |config|
-  config.around(:each, type: :feature) do |example|
+  config.around(:each) do |example|
     run_background_jobs_immediately do
       example.run
     end

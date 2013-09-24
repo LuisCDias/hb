@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   include Concerns::DeviseModules
 
-  after_create :sendmail
-
   has_many :reservations, dependent: :destroy
   has_many :campaigns, through: :reservations
   has_one :musician, dependent: :destroy
@@ -38,9 +36,5 @@ class User < ActiveRecord::Base
 
   def reserved_campaigns
     campaigns
-  end
-
-  def sendmail
-    UserMailer.signup_confirmation(self).deliver
   end
 end

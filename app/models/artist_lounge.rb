@@ -12,7 +12,7 @@ class ArtistLounge
   end
 
   def soundcloud_avatar
-    @artist.soundcloud_account.soundcloud_avatar
+    @artist.soundcloud_avatar
   end
 
   def soundcloud_followers
@@ -24,6 +24,10 @@ class ArtistLounge
   end
 
   def download_counts
-    campaigns.sum { |c| c.download_count }
+    @artist.total_campaign_download_count
+  end
+
+  def playcount
+    @artist.total_campaign_playcount
   end
 end
