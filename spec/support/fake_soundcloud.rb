@@ -18,7 +18,11 @@ class FakeSoundcloud < Sinatra::Base
   end
 
   get '/tracks/:track_id' do
-    json_response 200, 'campaign_track.json'
+    if params[:track_id] == '106359231'
+      json_response 200, 'campaign_track_without_artwork.json'
+    else
+      json_response 200, 'campaign_track.json'
+    end
   end
 
   put '/tracks/:track_id' do
