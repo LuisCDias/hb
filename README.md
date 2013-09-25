@@ -10,7 +10,7 @@ to create a 'campaign'
 Campaigns can be created for any track a musician has on Soundcloud or a new 
 one can be uploaded to Soundcloud through Headblendr.
 The metadata for the selected track will be updated, disabling the ability to 
-download it through directly through Soundcloud. A local representation of the 
+download it directly through Soundcloud. A local representation of the 
 track is stored (namely, the soundcloud id, permalink url, download url and
 artwork url) in order to keep API requests to a minimum.
 
@@ -32,11 +32,11 @@ environments and has to be installed and running.
 1. Clone repo
 2. Run `bundle check` and, if any gems are missing from your local environment,
    run `bundle install`
-3. Run `rake db:setup´`to create the database and populate it with the needed
+3. Run `rake db:setup` to create the database and populate it with the required 
    seed data
 4. The test suite can be run with `rake`. Current coverage stands at 98.66%.
 5. To start the app locally, run `foreman start -p 3000`. Setting the port to
-   3000 is required to be able to connect locally to Soundcloud.
+   3000 is required to be able to connect to the development app registered on Soundcloud.
 6. The required ENV variables can found in `.env`. They should be correctly
    picked up in both development and test environments.
 
