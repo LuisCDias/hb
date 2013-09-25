@@ -34,7 +34,7 @@ environments and has to be installed and running.
    run `bundle install`
 3. Run `rake db:setup` to create the database and populate it with the required 
    seed data
-4. The test suite can be run with `rake`. Current coverage stands at 98.66%.
+4. The test suite can be run with `rake`. Current coverage stands at 100%.
 5. To start the app locally, run `foreman start -p 3000`. Setting the port to
    3000 is required to be able to connect to the development app registered on Soundcloud.
 6. The required ENV variables can found in `.env`. They should be correctly
@@ -56,6 +56,10 @@ Facebook sign up/sign in does not work locally.
 The status of background jobs can be checked at `localhost:3000/delayed_job`.
 
 ## Notes about the testing setup ##
+
+Test coverage is at 100% but is still too reliant on feature specs. Unit testing 
+needs to be added. There are many points where testing setup can be refactored
+into helper methods, in order to remove duplication.
 
 In order not to hit the Soundcloud API continuously during testing, a small
 Sinatra app was created at `spec/support/fake_soundcloud.rb`, supported by a
