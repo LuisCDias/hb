@@ -7,7 +7,7 @@ describe SoundcloudGateway::SoundcloudClient, '#client' do
     expect(
       SoundcloudGateway::SoundcloudClient.new(redirect_url).
       client
-    ).to be_an_instance_of Soundcloud
+    ).to be_an_instance_of Soundcloud::Client
   end
 
   it 'returns a Soundcloud client with the correct redirect_url for auth' do
